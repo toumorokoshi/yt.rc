@@ -1,0 +1,32 @@
+;; Code to instantiate viper
+
+(setq viper-mode t)
+(require 'viper)
+(load-library "hideshow")
+(add-hook 'python-mode-hook 'hs-minor-mode)
+
+;; ido (listing of file in a directory in minibuffer)
+
+(require 'ido)
+(ido-mode 'both)
+
+;; Keybindings
+
+;; Wind-move 
+
+(global-set-key (kbd "C-x C-l") 'windmove-right)
+(global-set-key (kbd "C-x C-h") 'windmove-left)
+(global-set-key (kbd "C-x C-k") 'windmove-up)
+(global-set-key (kbd "C-x C-j") 'windmove-down)
+
+;; Hippie-expand (haven't really used it yet)
+
+(global-set-key (kbd "C-x C-;") 'hippie-expand)
+
+;; File search, doesn't really work like I want it to
+
+(global-set-key (kbd "C-x C-g") 'find-name-dired)
+
+;; Start a terminal, also doesn't work perfectly
+
+(global-set-key (kbd "C-c C-t") 'ansi-term)
