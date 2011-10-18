@@ -1,0 +1,99 @@
+(load ".emacs.noexternals")
+
+(setq viper-mode t)
+(require 'viper)
+(add-to-list 'load-path "~/.emacs.d/")
+(require 'auto-complete)
+(global-auto-complete-mode t)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+(load-library "vc-p4")
+(require 'vc-p4)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+(setq py-python-command "python")
+(setq pymacs-python-command py-python-command)
+(setq interpreter-mode-alist(cons '("python" . python-mode)interpreter-mode-alist))
+(setq auto-mode-list (cons'("\\.py$" . python-mode) auto-mode-alist))
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+(require 'pycomplete)
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+(global-set-key (kbd "C-x C-j") 'windmove-down)
+(global-set-key (kbd "C-x C-k") 'windmove-up)
+(global-set-key (kbd "C-x C-h") 'windmove-left)
+(global-set-key (kbd "C-x C-l") 'windmove-right)
+;; Set IDO for buffer and file completion options
+;;(require 'ido)
+;;(ido-mode 'both)
+
+;; Gonna try lusty-explorer.el
+(when (require 'lusty-explorer nil 'noerror)
+  (global-set-key (kbd "C-x C-f") 'lusty-file-explorer)
+  (global-set-key (kbd "C-x b") 'lusty-buffer-explorer))
+
+
+;; Asks if you want emacs asked before closing
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+(when window-system
+  (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(jabber-roster-line-format " %c %-25n %u %-8s  %S"))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+(setq max-lisp-eval-depth 10000)
+(require 'find-recursive)
+
+;; adding in hideshow autoloading
+(load-library "hideshow")
+(add-hook 'python-mode-hook 'hs-minor-mode)
+
+;; set up yasnippet
+
+(add-to-list 'load-path "~/.emacs/vendor")
+(progn (cd "~/.emacs.d/vendor")
+       (normal-top-level-add-subdirs-to-load-path))
+
+(require 'yasnippet)
+
+(setq yas/trigger-key (kbd "C-c C-o"))
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/snippets")
+
+(autoload 'php-mode "php-mode" "Major mode for editing code." t)
+(add-to-list 'auto-mode-list '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-list '("\\.inc$" . php-mode))
+
+;;Jabber stuff 
+(add-to-list 'load-path "~/.emacs.d/jabber")
+(require 'jabber-autoloads)
+;; For google talk
+(setq jabber-account-list
+      '(("tsutsumi.yusuke@gmail.com"
+         (:network-server . "talk.google.com")
+         (:connection-type . ssl))))
+
