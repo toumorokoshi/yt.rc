@@ -1,15 +1,26 @@
-(load ".emacs.noexternals")
+;; Bring in everything from noexternals - 
+;; .externals is an extended version, including all includes
+;; Hopefully with emacs 24 the package manager can be used, but 
+;; I don't want to add a bunch of .el externals, files, and images
+;; to my github
 
-(setq viper-mode t)
-(require 'viper)
+(load "~/.emacs.noexternals")
+
+;; Basic Includes
 (add-to-list 'load-path "~/.emacs.d/")
+
+;; auto-complete.el
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+
+;; perforce
 (load-library "vc-p4")
 (require 'vc-p4)
+
+;; pymacs
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
@@ -24,21 +35,11 @@
 (setq auto-mode-list (cons'("\\.py$" . python-mode) auto-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (require 'pycomplete)
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-(global-set-key (kbd "C-x C-j") 'windmove-down)
-(global-set-key (kbd "C-x C-k") 'windmove-up)
-(global-set-key (kbd "C-x C-h") 'windmove-left)
-(global-set-key (kbd "C-x C-l") 'windmove-right)
-;; Set IDO for buffer and file completion options
-;;(require 'ido)
-;;(ido-mode 'both)
 
 ;; Gonna try lusty-explorer.el
 (when (require 'lusty-explorer nil 'noerror)
   (global-set-key (kbd "C-x C-f") 'lusty-file-explorer)
   (global-set-key (kbd "C-x b") 'lusty-buffer-explorer))
-
 
 ;; Asks if you want emacs asked before closing
 (defun ask-before-closing ()
@@ -52,6 +53,9 @@
 
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+
+
+;; Jabber Stuff
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -68,10 +72,6 @@
 (setq max-lisp-eval-depth 10000)
 (require 'find-recursive)
 
-;; adding in hideshow autoloading
-(load-library "hideshow")
-(add-hook 'python-mode-hook 'hs-minor-mode)
-
 ;; set up yasnippet
 
 (add-to-list 'load-path "~/.emacs/vendor")
@@ -83,6 +83,8 @@
 (setq yas/trigger-key (kbd "C-c C-o"))
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/snippets")
+
+;; php-mode, apparently not in emacs already
 
 (autoload 'php-mode "php-mode" "Major mode for editing code." t)
 (add-to-list 'auto-mode-list '("\\.php$" . php-mode))
