@@ -11,10 +11,8 @@
 
 ;; auto-complete.el
 (require 'auto-complete)
-(global-auto-complete-mode t)
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
 
 ;; perforce
 (load-library "vc-p4")

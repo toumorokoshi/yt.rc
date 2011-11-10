@@ -1,0 +1,8 @@
+;; Packages to install first (check if emacs is 24 or higher)
+(if (>= emacs-major-version 24) 
+    (progn
+        (if (fboundp 'TeX-command-master) nil (package-install 'auctex))
+        (if (fboundp 'rainbow-mode) nil (package-install 'rainbow-mode))
+    )
+)
+

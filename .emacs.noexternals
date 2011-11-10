@@ -1,3 +1,7 @@
+;; Load packages for emacs 24. Keep package-based stuff separate in loadpackages
+;; someday I may want a "bare" emacs file
+(load "~/.emacs.loadpackages")
+
 ;; Code to instantiate viper
 
 (setq viper-mode t)
@@ -14,12 +18,19 @@
 
 ;; Keybindings
 
+;; Whitespace mode
+(global-set-key (kbd "C-c h") 'whitespace-mode)
+
 ;; Wind-move 
 
 (global-set-key (kbd "C-x C-l") 'windmove-right)
 (global-set-key (kbd "C-x C-h") 'windmove-left)
 (global-set-key (kbd "C-x C-k") 'windmove-up)
 (global-set-key (kbd "C-x C-j") 'windmove-down)
+
+;; better indenting
+(setq indent-tabs-mode nil)
+(setq tab-width 4)
 
 ;; Hippie-expand (haven't really used it yet)
 
@@ -45,3 +56,6 @@
 
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
+
+
+;; This is more auxiliary stuff
