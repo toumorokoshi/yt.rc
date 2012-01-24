@@ -3,9 +3,16 @@
 (load "~/.emacs.loadpackages")
 
 ;; Code to instantiate viper
-
 (setq viper-mode t)
 (require 'viper)
+
+;; dvorak
+(defadvice switch-to-buffer (after activate-input-method activate)
+  (activate-input-method "english-dvorak")
+  (set-input-method "english-dvorak"))
+
+;; Set font size
+(set-face-attribute 'default nil :height 100)
 
 ;; Adding in hideshow
 (load-library "hideshow")
