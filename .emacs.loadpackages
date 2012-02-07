@@ -1,9 +1,22 @@
 ;; Packages to install first (check if emacs is 24 or higher)
 (if (>= emacs-major-version 24) 
     (progn
+	;; Add a larger package list
+	(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
+                          ("gnu" . "http://elpa.gnu.org/packages/")
+                          ("marmalade" . "http://marmalade-repo.org/packages/"))) 
 ;; everything is messing THIS UP!
 ;;        (if (fboundp 'TeX-command-master) nil (package-install 'auctex))
-;;        (if (fboundp 'rainbow-mode) nil (package-install 'rainbow-mode))
+       (package-refresh-contents) 
+       ;; Install flymake mode if it doesn't exist, then configure it
+       (if (fboundp 'flymake-mode) nil (package-install 'flymake-mode))
+       (global-set-key (kbd "C-; C-f") 'flymake-mode)  
+       ;; flymake-cursor
+       (if (fboundp 'show-fly-err-at-point) nil (package-install 'flymake-cursor))
+       ;; Install rainbow mode if it doesn't exist, then configure it
+       (if (fboundp 'rainbow-mode) nil (package-install 'rainbow-mode)) 
+       (defun all-css-modes() (css-mode) (rainbow-mode)) 
+       (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
     )
 )
 

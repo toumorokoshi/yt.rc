@@ -1,10 +1,13 @@
 ;; Load packages for emacs 24. Keep package-based stuff separate in loadpackages
 ;; someday I may want a "bare" emacs file
-(load "~/.emacs.loadpackages")
+;;(load "~/.emacs.loadpackages")
+(add-hook 'after-init-hook '(lambda ()
+	  (load "~/.emacs.loadpackages"))) 
 
 ;; Code to instantiate viper
 (setq viper-mode t)
 (require 'viper)
+(global-unset-key (kbd "C-z")) 
 
 ;; dvorak
 (defadvice switch-to-buffer (after activate-input-method activate)
