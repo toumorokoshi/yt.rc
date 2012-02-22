@@ -12,3 +12,5 @@
       (list "~/.emacs.d/includes/pyflakespep8.py" (list local-file))))
   (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pychecker-init)))
+;; tell flymake to load on python files
+(add-hook 'find-file-hook 'flymake-find-file-hook)
