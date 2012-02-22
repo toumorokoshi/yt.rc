@@ -69,3 +69,5 @@
 
 
 ;; This is more auxiliary stuff
+(load "~/.emacs.externals") 
+

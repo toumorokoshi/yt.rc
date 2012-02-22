@@ -15,9 +15,9 @@
        (when (not (require 'rainbow-mode nil t)) (package-install 'rainbow-mode))
        (defun all-css-modes() (css-mode) (rainbow-mode)) 
        (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
-       ;; auto-complete
-       (add-to-list 'load-path "~/.emacs.d/")
-       (require 'auto-complete)
-       (global-auto-complete-mode t)
+       (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
+       (require 'yasnippet)
+       (yas/initialize)
+       (yas/load-directory "~/.emacs.d/snippets")
     )
 )
