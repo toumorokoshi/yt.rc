@@ -70,4 +70,5 @@
 
 ;; This is more auxiliary stuff
 (load "~/.emacs.externals") 
+(load "~/.emacs.externals_tools") 
 
