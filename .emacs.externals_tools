@@ -17,6 +17,13 @@
 ;; tell flymake to load on python files
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 (delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks) 
+(delete '("\\.xml?\\'" flymake-xml-init) flymake-allowed-file-name-masks) 
+
+;; Java Flymake (requires java)
+(defun java-flymake-init()
+       (list "javac" (list (flymake-init-create-temp-buffer-copy
+				'flymake-create-temp-with-folder-structure))))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.java$" java-flymake-init flymake-simple-cleanup))
 
 ;; Code Completion
 ;; rope (easy_install rope)

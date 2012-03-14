@@ -13,8 +13,7 @@
 (defadvice switch-to-buffer (after activate-input-method activate)
   (activate-input-method "english-dvorak")
   (set-input-method "english-dvorak"))
-
-;; Set font size
+ ;; Set font size
 (set-face-attribute 'default nil :height 100)
 
 ;; Adding in hideshow
@@ -40,7 +39,7 @@
 
 ;; better indenting
 (setq indent-tabs-mode nil)
-(setq tab-width 4)
+(setq tab-width 2)
 
 ;; Hippie-expand (haven't really used it yet)
 
@@ -71,4 +70,6 @@
 ;; This is more auxiliary stuff
 (load "~/.emacs.externals") 
 (load "~/.emacs.externals_tools") 
+;; Gotta look good
+(load "~/.emacs.style")
 
