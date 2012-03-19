@@ -1,7 +1,7 @@
 ; Features for emacs-24
 (if (>= emacs-major-version 24)
     (progn
-	(load-theme 'wombat t)
+	(load-theme 'Greyhound t)
     )
 )
 

@@ -4,6 +4,10 @@
 (add-hook 'after-init-hook '(lambda ()
 	  (load "~/.emacs.loadpackages"))) 
 
+;; Gotta look good
+;; also have to load before viper mode, it changes the cursor color if not
+(load "~/.emacs.style")
+
 ;; Code to instantiate viper
 (setq viper-mode t)
 (require 'viper)
@@ -70,6 +74,4 @@
 ;; This is more auxiliary stuff
 (load "~/.emacs.externals") 
 (load "~/.emacs.externals_tools") 
-;; Gotta look good
-(load "~/.emacs.style")
 
