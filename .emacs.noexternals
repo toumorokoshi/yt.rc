@@ -42,8 +42,12 @@
 (global-set-key (kbd "C-x C-j") 'windmove-down)
 
 ;; better indenting
-(setq indent-tabs-mode nil)
-(setq tab-width 2)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
+
+;; Python-mode
+(add-hook 'python-mode-hook '(lambda () 
+ (setq python-indent 4)))
 
 ;; Hippie-expand (haven't really used it yet)
 
