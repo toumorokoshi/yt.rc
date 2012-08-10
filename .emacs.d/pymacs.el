@@ -138,6 +138,8 @@ Possible values are nil, t or ask.")
   "If zombies should trigger hard errors, whenever they get called.
 If `nil', calling a zombie will merely produce a diagnostic message.")
 
+(defvar pymacs-load-history nil "Pymacs loading history.")
+
 ;;;###autoload
 (defun pymacs-load (module &optional prefix noerror)
   "Import the Python module named MODULE into Emacs.
@@ -155,6 +157,10 @@ If NOERROR is not nil, do not raise error when the module is not found."
   (message "Pymacs loading %s..." module)
   (let ((lisp-code (pymacs-call "pymacs_load_helper" module prefix)))
     (cond (lisp-code (let ((result (eval lisp-code)))
+                       (add-to-list 'pymacs-load-history
+                                    (list module prefix noerror)
+                                    ;; append so that order is kept
+                                    'append)
                        (message "Pymacs loading %s...done" module)
                        result))
           (noerror (message "Pymacs loading %s...failed" module) nil)
@@ -190,7 +196,7 @@ which is the default."
 ;;;###autoload
 (defun pymacs-eval (text)
   "Compile TEXT as a Python expression, and return its value."
-  (interactive "sPython expression? ")
+  (interactive "sPython expression: ")
   (let ((value (pymacs-serve-until-reply "eval" `(princ ,text))))
     (when (interactive-p)
       (message "%S" value))
@@ -200,7 +206,7 @@ which is the default."
 (defun pymacs-exec (text)
   "Compile and execute TEXT as a sequence of Python statements.
 This functionality is experimental, and does not appear to be useful."
-  (interactive "sPython statements? ")
+  (interactive "sPython statements: ")
   (let ((value (pymacs-serve-until-reply "exec" `(princ ,text))))
     (when (interactive-p)
       (message "%S" value))
@@ -650,7 +656,17 @@ The timer is used only if `post-gc-hook' is not available.")
           (add-hook 'post-gc-hook 'pymacs-schedule-gc)
         (setq pymacs-gc-timer (run-at-time 20 20 'pymacs-schedule-gc))))
     ;; If nothing failed, only then declare that Pymacs has started!
-    (setq pymacs-transit-buffer buffer)))
+    (setq pymacs-transit-buffer buffer)
+    (let ((modules pymacs-load-history))
+      (setq pymacs-load-history nil)
+      (when (and modules (yes-or-no-p "Reload modules in previous session? "))
+        (mapc (lambda (args)
+                ;; Be defensive in case sys.path differs
+                (condition-case err
+                    (apply 'pymacs-load args)
+                  (error
+                   (message "%s: %s" (car err) (error-message-string err)))))
+              modules)))))
 
 (defun pymacs-terminate-services ()
   ;; This function is mainly provided for documentation purposes.
