@@ -57,6 +57,11 @@
 
 (global-set-key (kbd "C-c C-t") 'ansi-term)
 
+;; Set octave major mode for m files
+(add-to-list
+    'auto-mode-alist
+    '("\\.m$" . octave-mode))
+
 ;; Asks if you want emacs asked before closing
 (defun ask-before-closing ()
   "Ask whether or not to close, and then close if y was pressed"

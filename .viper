@@ -9,6 +9,7 @@
 (define-key viper-vi-global-user-map "zm" 'hs-hide-block)
 (define-key viper-vi-global-user-map "zR" 'hs-show-all)
 (define-key viper-vi-global-user-map "zR" 'hs-show-block)
+(define-key viper-vi-global-user-map "/" 'isearch-forward-regexp)
 
 ;; Makes viper use regex search by default
 ;; doing a search twice switches it to normal search
