@@ -21,3 +21,4 @@
 
 ;; Change shift-width to 4
 (setq viper-shift-width 4) ; don't touch or else...
+

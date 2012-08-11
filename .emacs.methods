@@ -9,4 +9,3 @@
     (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
     (ad-activate 'isearch-search)))
 
-(ad-activate 'isearch-search)
