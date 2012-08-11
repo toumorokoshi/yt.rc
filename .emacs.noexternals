@@ -3,6 +3,11 @@
 ;;(load "~/.emacs.loadpackages")
 (add-hook 'after-init-hook '(lambda ()
 	  (load "~/.emacs.loadpackages"))) 
+;; emacs methods!
+(load "~/.emacs.methods") 
+
+;; activates emacs methods
+(ad-activate 'isearch-search)
 
 ;; Gotta look good
 ;; also have to load before viper mode, it changes the cursor color if not
