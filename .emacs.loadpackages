@@ -4,7 +4,8 @@
 	;; Add a larger package list
 	(setq package-archives '(("ELPA" . "http://tromey.com/elpa/") 
                           ("gnu" . "http://elpa.gnu.org/packages/")
-                          ("marmalade" . "http://marmalade-repo.org/packages/"))) 
+                          ("marmalade" . "http://marmalade-repo.org/packages/")
+                          ("melpa" . "http://melpa.milkbox.net/packages/"))) 
        (package-refresh-contents) 
        ;; Install flymake mode if it doesn't exist, then configure it
        (when (not (require 'flymake nil t)) (package-install 'flymake))  
@@ -19,6 +20,40 @@
        (when (not (require 'highlight-indentation nil t)) (package-install 'highlight-indentation))
        (add-hook 'python-mode-hook 'highlight-indentation)
        (require 'highlight-indentation)
+       ;; autocomplete
+       (when (not (require 'auto-complete nil t)) (package-install 'auto-complete))
+       (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+       (require 'auto-complete-config)
+       (ac-config-default)
+       (defun ac-ropemacs-initialize ()
+          (autoload 'pymacs-apply "pymacs")
+          (autoload 'pymacs-call "pymacs")
+          (autoload 'pymacs-eval "pymacs" nil t)
+          (autoload 'pymacs-exec "pymacs" nil t)
+          (autoload 'pymacs-load "pymacs" nil t)
+          (pymacs-load "ropemacs" "rope-")
+       t)
+       (ac-ropemacs-initialize)
+
+       (defun ac-ropemacs-candidates ()
+         (mapcar (lambda (completion)
+            (concat ac-prefix completion))
+          (rope-completions)))
+
+       (ac-define-source nropemacs
+         '((candidates . ac-ropemacs-candidates)
+           (symbol     . "p")))
+
+       (ac-define-source nropemacs-dot
+         '((candidates . ac-ropemacs-candidates)
+           (symbol     . "p")
+           (prefix     . c-dot)
+           (requires   . 0)))
+
+       (defun ac-nropemacs-setup ()
+          (setq ac-sources (append '(ac-source-nropemacs
+                                     ac-source-nropemacs-dot) ac-sources)))
+       (add-hook 'rope-open-project-hook 'ac-nropemacs-setup)
        ;; yasnippet
        (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
        (require 'yasnippet)

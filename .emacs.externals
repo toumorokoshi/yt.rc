@@ -4,5 +4,5 @@
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;; auto-complete
-(require 'auto-complete)
-(global-auto-complete-mode t)
+;; (require 'auto-complete)
+;; (global-auto-complete-mode t)
