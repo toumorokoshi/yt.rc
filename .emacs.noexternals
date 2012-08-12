@@ -18,6 +18,12 @@
 (require 'viper)
 (global-unset-key (kbd "C-z")) 
 
+;; uniquify (prefix names)
+(require 'uniquify)
+(setq
+  uniquify-buffer-name-style 'forward
+)
+
 ;; dvorak
 (defadvice switch-to-buffer (after activate-input-method activate)
   (activate-input-method "english-dvorak")

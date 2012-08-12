@@ -17,9 +17,8 @@
        (defun all-css-modes() (css-mode) (rainbow-mode)) 
        (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
        ;; highlight-indentation
-       (when (not (require 'highlight-indentation nil t)) (package-install 'highlight-indentation))
-       (add-hook 'python-mode-hook 'highlight-indentation)
        (require 'highlight-indentation)
+       (add-hook 'python-mode-hook 'highlight-indentation-mode)
        ;; autocomplete
        (when (not (require 'auto-complete nil t)) (package-install 'auto-complete))
        (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -53,7 +52,8 @@
        (defun ac-nropemacs-setup ()
           (setq ac-sources (append '(ac-source-nropemacs
                                      ac-source-nropemacs-dot) ac-sources)))
-       (add-hook 'rope-open-project-hook 'ac-nropemacs-setup)
+
+       (add-hook 'python-mode-hook 'ac-nropemacs-setup)
        ;; yasnippet
        (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
        (require 'yasnippet)
