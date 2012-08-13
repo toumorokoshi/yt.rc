@@ -35,6 +35,10 @@
 (load-library "hideshow")
 (add-hook 'python-mode-hook 'hs-minor-mode)
 
+;; change the filename collisions in emacs
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 ;; ido (listing of file in a directory in minibuffer)
 
 (require 'ido)
