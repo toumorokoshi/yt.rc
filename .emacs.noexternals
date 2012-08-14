@@ -4,6 +4,7 @@
 (add-hook 'after-init-hook '(lambda ()
 	  (load "~/.emacs.loadpackages")
     (load "~/.emacs.methods") 
+    (load "~/.emacs.elget") 
     (ad-activate 'isearch-search)))
 ;; emacs methods!
 
