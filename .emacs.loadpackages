@@ -20,6 +20,10 @@
        (when (not (require 'highlight-indentation nil t)) (package-install 'highlight-indentation))
        (require 'highlight-indentation)
        (add-hook 'python-mode-hook 'highlight-indentation-mode)
+       ;; yaml-mode
+       (when (not (require 'yaml-mode nil t)) (package-install 'highlight-indentation))
+       (require 'yaml-mode)
+       (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)) 
        ;; autocomplete
        (when (not (require 'auto-complete nil t)) (package-install 'auto-complete))
        (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")

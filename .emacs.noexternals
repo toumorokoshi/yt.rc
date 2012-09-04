@@ -1,18 +1,11 @@
 ;; Load packages for emacs 24. Keep package-based stuff separate in loadpackages
 ;; someday I may want a "bare" emacs file
 ;;(load "~/.emacs.loadpackages")
-(add-hook 'after-init-hook '(lambda ()
-	  (load "~/.emacs.loadpackages")
-    (load "~/.emacs.methods") 
-    (load "~/.emacs.elget") 
-    (ad-activate 'isearch-search)))
-;; emacs methods!
-
-;; activates emacs methods
-
-;; Gotta look good
-;; also have to load before viper mode, it changes the cursor color if not
-(load "~/.emacs.style")
+;;(add-hook 'after-init-hook '(lambda ()
+;;  (load "~/.emacs.loadpackages")
+;;  (load "~/.emacs.methods") 
+;;  (load "~/.emacs.elget") 
+;;  (ad-activate 'isearch-search)))
 
 ;; Code to instantiate viper
 (setq viper-mode t)
@@ -96,7 +89,4 @@
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
 
-;; This is more auxiliary stuff
-(load "~/.emacs.externals") 
-(load "~/.emacs.externals_tools") 
 
