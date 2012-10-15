@@ -61,5 +61,9 @@
        (yas/global-mode 1) 
        (yas/load-directory "~/.emacs.d/snippets")
        (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+       ;; Scala-Mode
+       (add-to-list
+           'auto-mode-alist
+           '("\\.scala$" . scala-mode))
     )
 )
