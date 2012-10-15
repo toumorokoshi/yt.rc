@@ -4,7 +4,7 @@
 (load "~/.emacs.noexternals")
 (load "~/.emacs.externals") 
 (load "~/.emacs.externals_tools") 
-(load "~/.emacs.methods") 
+(load "~/.emacs.methods")
 (add-hook 'after-init-hook '(lambda ()
   (load "~/.emacs.loadpackages2")
   (ad-activate 'isearch-search)))

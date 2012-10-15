@@ -23,6 +23,8 @@
         (:name yaml-mode :type elpa)
         (:name auto-complete :type elpa)
         (:name yasnippet :type elpa)
+        (:name multiple-cursors :type elpa)
+        (:name scala-mode :type elpa)
         (:name multiple-cursors :type elpa)))
 
 (el-get 'sync)
@@ -79,3 +81,5 @@
 (yas/global-mode 1) 
 (yas/load-directory "~/.emacs.d/snippets")
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+
+;; Mark-multiple
