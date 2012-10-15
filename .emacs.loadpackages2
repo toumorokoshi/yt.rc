@@ -1,0 +1,81 @@
+;; Setup ELPA package sources
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+;; Check for el-get, install if not exists
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(unless (require 'el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (goto-char (point-max))
+     (eval-print-last-sexp))))
+
+
+;; Set up packages
+(setq el-get-sources
+      '((:name flymake :type elpa)
+        (:name flymake-cursor :type elpa)
+        (:name rainbow-mode :type elpa)
+        (:name highlight-indentation :type elpa)
+        (:name yaml-mode :type elpa)
+        (:name auto-complete :type elpa)
+        (:name yasnippet :type elpa)
+        (:name multiple-cursors :type elpa)))
+
+(el-get 'sync)
+;; flymake-mode
+(global-set-key (kbd "C-; C-f") 'flymake-mode)  
+;; rainbow-mode
+(defun all-css-modes() (css-mode) (rainbow-mode)) 
+(add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+;; highlight-indentation
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
+;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)) 
+;; autocomplete
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+
+(defun ac-ropemacs-initialize ()
+  (autoload 'pymacs-apply "pymacs")
+  (autoload 'pymacs-call "pymacs")
+  (autoload 'pymacs-eval "pymacs" nil t)
+  (autoload 'pymacs-exec "pymacs" nil t)
+  (autoload 'pymacs-load "pymacs" nil t)
+  (pymacs-load "ropemacs" "rope-") t)
+
+(ac-ropemacs-initialize)
+
+(defun ac-ropemacs-candidates ()
+ (mapcar (lambda (completion)
+    (concat ac-prefix completion))
+  (rope-completions)))
+
+(ac-define-source nropemacs
+ '((candidates . ac-ropemacs-candidates)
+   (symbol     . "p")))
+
+(ac-define-source nropemacs-dot
+ '((candidates . ac-ropemacs-candidates)
+   (symbol     . "p")
+   (prefix     . c-dot)
+   (requires   . 0)))
+
+(defun ac-nropemacs-setup ()
+  (setq ac-sources (append '(ac-source-nropemacs
+                             ac-source-nropemacs-dot) ac-sources)))
+
+(add-hook 'python-mode-hook 'ac-nropemacs-setup)
+
+;; yasnippet
+(when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
+(require 'yasnippet)
+(yas/initialize)
+(yas/global-mode 1) 
+(yas/load-directory "~/.emacs.d/snippets")
+(setq ac-sources '(ac-source-semantic ac-source-yasnippet))
