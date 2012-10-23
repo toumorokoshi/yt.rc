@@ -30,6 +30,8 @@
 (el-get 'sync)
 ;; flymake-mode
 (global-set-key (kbd "C-; C-f") 'flymake-mode)  
+(defun flymake-get-tex-args (file-name)
+  (list "chktex" (list "-q" "-v0" filename)))
 ;; rainbow-mode
 (defun all-css-modes() (css-mode) (rainbow-mode)) 
 (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 

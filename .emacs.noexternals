@@ -7,7 +7,13 @@
 ;;  (load "~/.emacs.elget") 
 ;;  (ad-activate 'isearch-search)))
 
-;; Code to instantiate viper
+
+;; Remove scrollbars, menu bars, and toolbars
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+;; code to instantiate viper
 (setq viper-mode t)
 (require 'viper)
 (global-unset-key (kbd "C-z")) 
@@ -22,8 +28,19 @@
 (defadvice switch-to-buffer (after activate-input-method activate)
   (activate-input-method "english-dvorak")
   (set-input-method "english-dvorak"))
- ;; Set font size
-(set-face-attribute 'default nil :height 100)
+;; Set font size
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "Monaco")))))
 
 ;; Adding in hideshow
 (load-library "hideshow")
