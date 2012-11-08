@@ -18,7 +18,12 @@
 (setq el-get-sources
       '((:name flymake :type elpa)
         (:name flymake-cursor :type elpa)
-        (:name rainbow-mode :type elpa)
+        (:name rainbow-mode :type elpa
+            :config (lambda ()
+                (defun all-css-modes() (css-mode) (rainbow-mode))
+                (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+            )
+        )
         (:name highlight-indentation :type elpa)
         (:name yaml-mode :type elpa)
         (:name auto-complete :type elpa)
@@ -29,14 +34,32 @@
         (:name js2-mode :type elpa)
         (:name autopair :type elpa)))
 
+;; install any packages not installed yet
+(mapc (lambda (f)
+        (let ((name (plist-get f :name)))
+             (when (not (require name nil t)) (el-get-install name))))
+el-get-sources)
+
+(let ((config (plist-get (elt el-get-sources 2) :config)))
+     (funcall config)
+)
+
+;; run "after" commands
+(mapc (lambda (f) (
+      (let ((config (plist-get f :config)))
+        (if (not (= config nil))
+          config nil))))
+el-get-sources)
+
+
 (el-get 'sync)
 ;; flymake-mode
 (global-set-key (kbd "C-; C-f") 'flymake-mode)  
 (defun flymake-get-tex-args (file-name)
   (list "chktex" (list "-q" "-v0" filename)))
 ;; rainbow-mode
-(defun all-css-modes() (css-mode) (rainbow-mode)) 
-(add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+;; (defun all-css-modes() (css-mode) (rainbow-mode)) 
+;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 ;; yaml-mode
