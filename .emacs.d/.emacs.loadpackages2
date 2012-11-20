@@ -26,6 +26,7 @@
         )
         (:name highlight-indentation :type elpa)
         (:name yaml-mode :type elpa)
+        (:name popup :type elpa)
         (:name auto-complete :type elpa)
         (:name yasnippet :type elpa)
         (:name yasnippet-bundle :type elpa)
