@@ -1,12 +1,12 @@
 ;; Gotta look good
 ;; also have to load before viper mode, it changes the cursor color if not
-(load "~/.emacs.style")
-(load "~/.emacs.noexternals")
-(load "~/.emacs.externals") 
-(load "~/.emacs.externals_tools") 
-(load "~/.emacs.methods")
+(load "~/.emacs.d/.emacs.style")
+(load "~/.emacs.d/.noexternals")
+(load "~/.emacs.d/.emacs.externals") 
+(load "~/.emacs.d/.emacs.externals_tools") 
+(load "~/.emacs.d/.emacs.methods")
 (add-hook 'after-init-hook '(lambda ()
-  (load "~/.emacs.loadpackages2")
+  (load "~/.emacs.d/.emacs.loadpackages2")
   (ad-activate 'isearch-search)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
