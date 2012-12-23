@@ -28,11 +28,13 @@
         (:name yaml-mode :type elpa)
         (:name auto-complete :type elpa)
         (:name yasnippet :type elpa)
+        (:name yasnippet-bundle :type elpa)
         (:name multiple-cursors :type elpa)
         (:name scala-mode :type elpa)
         (:name multiple-cursors :type elpa)
         (:name js2-mode :type elpa)
-        (:name autopair :type elpa)))
+        (:name autopair :type elpa)
+        (:name anything-git-goto :type elpa)))
 
 ;; install any packages not installed yet
 (mapc (lambda (f)
@@ -45,11 +47,11 @@ el-get-sources)
 )
 
 ;; run "after" commands
-(mapc (lambda (f) (
-      (let ((config (plist-get f :config)))
-        (if (not (= config nil))
-          config nil))))
-el-get-sources)
+;; (mapc (lambda (f) (
+;;       (let ((config (plist-get f :config)))
+;;         (if (not (= config nil))
+;;           config nil))))
+;; el-get-sources)
 
 
 (el-get 'sync)
@@ -111,7 +113,6 @@ el-get-sources)
 
 ;; Mark-multiple
 
-
-;; Autopair mode
-(require 'autopair)
-(autopair-global-mode 1)
+;; anything-git-goto
+(require 'anything-git-goto)
+(global-set-key (kbd "C-x C-g") 'anything-git-goto)

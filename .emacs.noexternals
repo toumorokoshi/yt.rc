@@ -13,6 +13,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 
+;; No splash screen
+(setq inhibit-startup-message t)
+
 ;; code to instantiate viper
 (setq viper-mode t)
 (require 'viper)
@@ -80,8 +83,8 @@
 (global-set-key (kbd "C-x C-;") 'hippie-expand)
 
 ;; File search, doesn't really work like I want it to
+;; (global-set-key (kbd "C-x C-g") 'find-name-dired)
 
-(global-set-key (kbd "C-x C-g") 'find-name-dired)
 
 ;; Start a terminal, also doesn't work perfectly
 
