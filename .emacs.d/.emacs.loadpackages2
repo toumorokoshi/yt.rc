@@ -111,6 +111,8 @@ el-get-sources)
 (yas/load-directory "~/.emacs.d/snippets")
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
+;; add snippets to autocomplete.el
+
 ;; Mark-multiple
 
 ;; anything-git-goto

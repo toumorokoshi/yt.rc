@@ -1,7 +1,7 @@
 ;; Gotta look good
 ;; also have to load before viper mode, it changes the cursor color if not
 (load "~/.emacs.d/.emacs.style")
-(load "~/.emacs.d/.noexternals")
+(load "~/.emacs.d/.emacs.noexternals")
 (load "~/.emacs.d/.emacs.externals") 
 (load "~/.emacs.d/.emacs.externals_tools") 
 (load "~/.emacs.d/.emacs.methods")

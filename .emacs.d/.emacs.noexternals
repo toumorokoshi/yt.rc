@@ -108,8 +108,5 @@
 (when window-system
   (global-set-key (kbd "C-x C-c") 'ask-before-closing))
 
-
-;; This is more auxiliary stuff
-(load "~/.emacs.externals") 
-(load "~/.emacs.externals_tools") 
-
+;; Associate .emacs files to lisp-mode
+(add-to-list 'auto-mode-alist '("\\.emacs.*$" . lisp-mode))
