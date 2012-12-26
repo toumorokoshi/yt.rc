@@ -35,7 +35,9 @@
         (:name multiple-cursors :type elpa)
         (:name js2-mode :type elpa)
         (:name autopair :type elpa)
-        (:name anything-git-goto :type elpa)))
+        (:name anything :type elpa)
+        (:name anything-git-goto :type elpa)
+        (:name p4 :type elpa)))
 
 ;; install any packages not installed yet
 (mapc (lambda (f)
@@ -60,6 +62,7 @@ el-get-sources)
 (global-set-key (kbd "C-; C-f") 'flymake-mode)  
 (defun flymake-get-tex-args (file-name)
   (list "chktex" (list "-q" "-v0" filename)))
+(load-library "flymake-cursor")
 ;; rainbow-mode
 ;; (defun all-css-modes() (css-mode) (rainbow-mode)) 
 ;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
@@ -107,7 +110,6 @@ el-get-sources)
 ;; yasnippet
 (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
 (require 'yasnippet)
-(yas/initialize)
 (yas/global-mode 1) 
 (yas/load-directory "~/.emacs.d/snippets")
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
@@ -117,5 +119,11 @@ el-get-sources)
 ;; Mark-multiple
 
 ;; anything-git-goto
-(require 'anything-git-goto)
-(global-set-key (kbd "C-x C-g") 'anything-git-goto)
+;; (require 'anything-git-goto)
+;; (global-set-key (kbd "C-x C-g") 'anything-git-goto)
+;; Autopair mode
+;; (require 'autopair)
+;; (autopair-global-mode 1)
+
+;; p4
+(load-library "p4")
