@@ -38,12 +38,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 90 :width normal :foundry "unknown" :family "Monaco")))))
 
 ;; Adding in hideshow
 (load-library "hideshow")
@@ -63,8 +57,10 @@
 ;; Whitespace mode
 (global-set-key (kbd "C-c h") 'whitespace-mode)
 
-;; Wind-move 
+;; Initiate viper mode
+(global-set-key (kbd "C-c C-v") 'viper-mode)
 
+;; Wind-move 
 (global-set-key (kbd "C-x C-l") 'windmove-right)
 (global-set-key (kbd "C-x C-h") 'windmove-left)
 (global-set-key (kbd "C-x C-k") 'windmove-up)

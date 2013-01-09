@@ -1,5 +1,5 @@
 ;; Gotta look good
-;; also have to load before viper mode, it changes the cursor color if not
+;; also have to load before viper mode, it changes the cursor color if nottt
 (load "~/.emacs.d/.emacs.style")
 (load "~/.emacs.d/.emacs.noexternals")
 (load "~/.emacs.d/.emacs.externals") 
