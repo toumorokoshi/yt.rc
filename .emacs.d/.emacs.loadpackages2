@@ -117,6 +117,9 @@ el-get-sources)
 ;; add snippets to autocomplete.el
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
+;; js2-mode
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; Mark-multiple
 
