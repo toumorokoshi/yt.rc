@@ -7,6 +7,8 @@
 ;;  (load "~/.emacs.elget") 
 ;;  (ad-activate 'isearch-search)))
 
+;; Remove GTK dialog boxes
+(setq use-dialog-box nil)
 
 ;; Remove scrollbars, menu bars, and toolbars
 (toggle-scroll-bar -1)
