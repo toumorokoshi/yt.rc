@@ -49,10 +49,10 @@
         (prefix-list-elements (rope-completions) ac-target))))
         "Source for Rope") 
 
-(add-hook 'python-mode-hook
-         (lambda ()
-                (set (make-local-variable 'ac-sources)
-                     (append ac-sources '(ac-source-rope))))) 
+;; (add-hook 'python-mode-hook
+;;          (lambda ()
+;;                 (set (make-local-variable 'ac-sources)
+;;                      (append ac-sources '(ac-source-rope))))) 
 
 
 ;;(ac-ropemacs-initialize)

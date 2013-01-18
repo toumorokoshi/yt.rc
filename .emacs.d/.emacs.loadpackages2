@@ -21,6 +21,27 @@
          :description "Continuous syntax checking for Emacs."
          :type github
          :pkgname "illusori/emacs-flymake")
+        (:name ctable
+         :description "Table Component for elisp"
+         :type github
+         :pkgname "kiwanami/emacs-ctable")
+        (:name deferred
+         :description "Simple asynchronous functions for emacs lisp"
+         :website "https://github.com/kiwanami/emacs-deferred"
+         :type github
+         :pkgname "kiwanami/emacs-deferred"
+         :features "deferred")
+        (:name epc
+         :description "An RPC stack for Emacs Lisp"
+         :type github
+         :pkgname "kiwanami/emacs-epc"
+         :depends (deferred ctable)) ; concurrent is in deferred package
+        (:name jedi
+         :description "An awesome Python auto-completion for Emacs"
+         :type github
+         :pkgname "tkf/emacs-jedi"
+         :build (("make" "requirements"))
+         :depends (epc auto-complete))
         (:name flymake-cursor :type elpa)
         (:name rainbow-mode :type elpa
             :config (lambda ()
@@ -30,10 +51,23 @@
         )
         (:name highlight-indentation :type elpa)
         (:name yaml-mode :type elpa)
-        (:name popup :type elpa)
-        (:name auto-complete :type elpa)
+        (:name popup
+         :website "https://github.com/auto-complete/popup-el"
+         :description "Visual Popup Interface Library for Emacs"
+         :type github
+         :pkgname "auto-complete/popup-el")
+        (:name fuzzy
+         :website "https://github.com/auto-complete/fuzzy-el"
+         :description "Fuzzy matching utilities for GNU Emacs"
+         :type github
+         :pkgname "auto-complete/fuzzy-el")
+        (:name auto-complete
+         :website "http://cx4a.org/software/auto-complete/"
+         :description "The most intelligent auto-completion extension."
+         :type github
+         :pkgname "auto-complete/auto-complete"
+         :depends (popup fuzzy))
         (:name yasnippet :type elpa)
-        (:name yasnippet-bundle :type elpa)
         (:name multiple-cursors :type elpa)
         (:name scala-mode :type elpa)
         (:name js2-mode :type elpa)
@@ -50,9 +84,9 @@
              (when (not (require name nil t)) (el-get-install name))))
 el-get-sources)
 
-(let ((config (plist-get (elt el-get-sources 2) :config)))
-     (funcall config)
-)
+;; (let ((config (plist-get (elt el-get-sources 2) :config)))
+;;      (funcall config)
+;; )
 
 ;; run "after" commands
 ;; (mapc (lambda (f) (
@@ -75,6 +109,7 @@ el-get-sources)
 ;; autocomplete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(setq ac-max-width 0.5)
 (require 'auto-complete-config)
 (ac-config-default)
 
@@ -88,26 +123,26 @@ el-get-sources)
 
 (ac-ropemacs-initialize)
 
-(defun ac-ropemacs-candidates ()
- (mapcar (lambda (completion)
-    (concat ac-prefix completion))
-  (rope-completions)))
+;; (defun ac-ropemacs-candidates ()
+;;  (mapcar (lambda (completion)
+;;     (concat ac-prefix completion))
+;;   (rope-completions)))
 
-(ac-define-source nropemacs
- '((candidates . ac-ropemacs-candidates)
-   (symbol     . "p")))
+;; (ac-define-source nropemacs
+;;  '((candidates . ac-ropemacs-candidates)
+;;    (symbol     . "p")))
 
-(ac-define-source nropemacs-dot
- '((candidates . ac-ropemacs-candidates)
-   (symbol     . "p")
-   (prefix     . c-dot)
-   (requires   . 0)))
+;; (ac-define-source nropemacs-dot
+;;  '((candidates . ac-ropemacs-candidates)
+;;    (symbol     . "p")
+;;    (prefix     . c-dot)
+;;    (requires   . 0)))
 
-(defun ac-nropemacs-setup ()
-  (setq ac-sources (append '(ac-source-nropemacs
-                             ac-source-nropemacs-dot) ac-sources)))
+;; (defun ac-nropemacs-setup ()
+;;   (setq ac-sources (append '(ac-source-nropemacs
+;;                              ac-source-nropemacs-dot) ac-sources)))
 
-(add-hook 'python-mode-hook 'ac-nropemacs-setup)
+;; (add-hook 'python-mode-hook 'ac-nropemacs-setup)
 
 ;; yasnippet
 (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
@@ -129,4 +164,21 @@ el-get-sources)
 
 ;; p4
 (load-library "p4")
+
+;; Trying out jedi
+;; In order for jedi to work, we need:
+;; virtual env installed
+(load-library "jedi")
+(setq jedi:complete-on-dot t)
+(defun jedi-choose-executable ()
+  (interactive)
+  (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
+      (setq jedi:server-command
+            (list python-executable jedi:server-script))
+      (jedi:stop-server)))
+(add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
+;; Trying to get it working with buildout/virtualenv in a nice way.
+;; this requires:
+;; jedi and epc installed as a system package
+(add-hook 'python-mode-hook 'jedi:setup)
 
