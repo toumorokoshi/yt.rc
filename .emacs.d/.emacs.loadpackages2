@@ -1,4 +1,5 @@
 ;; Setup ELPA package sources
+;; Switched over to el-get, we'll see if ELPA gets close to what I'm looking for.
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
                          ("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -13,67 +14,8 @@
      (goto-char (point-max))
      (eval-print-last-sexp))))
 
-
-;; Set up packages
-(setq el-get-sources
-      ;; Choosing the github version that's actually being maintained.
-      '((:name flymake
-         :description "Continuous syntax checking for Emacs."
-         :type github
-         :pkgname "illusori/emacs-flymake")
-        (:name ctable
-         :description "Table Component for elisp"
-         :type github
-         :pkgname "kiwanami/emacs-ctable")
-        (:name deferred
-         :description "Simple asynchronous functions for emacs lisp"
-         :website "https://github.com/kiwanami/emacs-deferred"
-         :type github
-         :pkgname "kiwanami/emacs-deferred"
-         :features "deferred")
-        (:name epc
-         :description "An RPC stack for Emacs Lisp"
-         :type github
-         :pkgname "kiwanami/emacs-epc"
-         :depends (deferred ctable)) ; concurrent is in deferred package
-        (:name jedi
-         :description "An awesome Python auto-completion for Emacs"
-         :type github
-         :pkgname "tkf/emacs-jedi"
-         :build (("make" "requirements"))
-         :depends (epc auto-complete))
-        (:name flymake-cursor :type elpa)
-        (:name rainbow-mode :type elpa
-            :config (lambda ()
-                (defun all-css-modes() (css-mode) (rainbow-mode))
-                (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
-            )
-        )
-        (:name highlight-indentation :type elpa)
-        (:name yaml-mode :type elpa)
-        (:name popup
-         :website "https://github.com/auto-complete/popup-el"
-         :description "Visual Popup Interface Library for Emacs"
-         :type github
-         :pkgname "auto-complete/popup-el")
-        (:name fuzzy
-         :website "https://github.com/auto-complete/fuzzy-el"
-         :description "Fuzzy matching utilities for GNU Emacs"
-         :type github
-         :pkgname "auto-complete/fuzzy-el")
-        (:name auto-complete
-         :website "http://cx4a.org/software/auto-complete/"
-         :description "The most intelligent auto-completion extension."
-         :type github
-         :pkgname "auto-complete/auto-complete"
-         :depends (popup fuzzy))
-        (:name yasnippet :type elpa)
-        (:name multiple-cursors :type elpa)
-        (:name scala-mode :type elpa)
-        (:name js2-mode :type elpa)
-        (:name anything-git-goto :type elpa)
-        (:name p4 :type elpa)))
-
+;; loading el-get-package list from another directory
+(load "~/.emacs.d/.emacs.elgetpackages")
 
 ;; Re-loading flymake xml until the package I install works.
 (load "~/.emacs.d/el-get/flymake/flymake.el")
@@ -109,7 +51,7 @@ el-get-sources)
 ;; autocomplete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(setq ac-max-width 0.5)
+;; (setq ac-max-width 0.5)
 (require 'auto-complete-config)
 (ac-config-default)
 
