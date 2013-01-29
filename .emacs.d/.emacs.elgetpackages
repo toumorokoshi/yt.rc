@@ -118,4 +118,19 @@
         :pkgname "mooz/js2-mode"
         :prepare (autoload 'js2-mode "js2-mode" nil t))
        (:name anything-git-goto :type elpa)
-       (:name p4 :type elpa)))
+       (:name p4 :type elpa)
+       (:name auctex
+        :website "http://www.gnu.org/software/auctex/"
+        :description "AUCTeX is an extensible package for writing and formatting TeX files in GNU Emacs and XEmacs. It supports many different TeX macro packages, including AMS-TeX, LaTeX, Texinfo, ConTeXt, and docTeX (dtx files)."
+        :type cvs
+        :module "auctex"
+        :url ":pserver:anonymous@cvs.sv.gnu.org:/sources/auctex"
+        :build `(("./autogen.sh")
+                ("./configure"
+                 "--without-texmf-dir"
+                 "--with-lispdir=`pwd`"
+                 ,(concat "--with-emacs=" el-get-emacs))
+                "make")
+        :load-path ("." "preview")
+        :load  ("tex-site.el" "preview/preview-latex.el")
+        :info "doc")))
