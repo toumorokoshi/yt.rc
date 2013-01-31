@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-#set -e
+set -e
 
-_sub_print_summaries() {
+print_summaries() {
   local commands=()
   local summaries=()
   local longest_command=0
   local command
 
   for command in $(sub-commands); do
-    local file="$(_sub_command_path "$command")"
+    local file="$(command_path "$command")"
     if [ ! -h "$file" ]; then
       local summary="$(summary "$file")"
       if [ -n "$summary" ]; then
@@ -32,7 +32,7 @@ _sub_print_summaries() {
   done
 }
 
-_sub_print_help() {
+print_help() {
   local file="$1"
   local usage="$(usage "$file")"
 
@@ -46,7 +46,7 @@ _sub_print_help() {
   fi
 }
 
-_sub_command_path() {
+command_path() {
   command -v "sub-$command" || command -v "sub-sh-$command" || true
 }
 
@@ -77,7 +77,7 @@ truncate() {
 # Provide sub completions
 if [ "$1" = "--complete" ]; then
   exec "sub-commands"
-  #exit
+  exit
 fi
 
 command="$1"
@@ -85,17 +85,17 @@ case "$command" in
 "") echo "Usage: sub <command> [<args>]
 
 Some useful sub commands are:
-$(_sub_print_summaries)
+$(print_summaries)
 
 See 'sub help <command>' for information on a specific command."
 ;;
 *)
-  file="$(_sub_command_path "$command")"
+  file="$(command_path "$command")"
 
   if [ -n "$file" ]; then
-    _sub_print_help "$file"
+    print_help "$file"
   else
     echo "sub: no such command \`$command'" >&2
-    #exit 1
+    exit 1
   fi
 esac
