@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+_sub_resolve_link() {
+  $(type -p greadlink readlink | head -1) "$1"
+}
+
+_sub_abs_dirname() {
+  local cwd="$(pwd)"
+  local path="$1"
+  
+  while [ -n "$path" ]; do
+    cd "${path%/*}"
+    local name="${path##*/}"
+    path="$(_sub_resolve_link "$name" || true)"
+  done
+
+  pwd
+  cd "$cwd"
+}
+
+_sub_source() {
+  local out=`grep $'#[ \t]*SOURCE' $1`
+  if [ "$out" == "" ]; then
+    echo "0"
+    return
+  fi
+  echo "1"
+}
+
+export SUB_PATH=`pwd`
+
+function sub() {
+    local original_path=$PATH
+    local source_command=0
+    export PATH="$SUB_PATH:$PATH"
+
+    libexec_path=$SUB_PATH
+
+    command="$1"
+    case "$command" in
+    "" | "-h" | "--help" )
+      sub-help
+      ;;
+    * )
+      command_path="$(command -v "sub-$command" || true)"
+      if [ ! -x "$command_path" ]; then
+        echo "sub: no such command \`$command'" >&2
+      fi
+      source_command=$(_sub_source $command_path)
+
+      shift
+      if [[ "$source_command" -eq 0 ]]; then
+        $command_path "$@"
+      else 
+        . $command_path "$@"
+      fi
+      ;;
+    esac
+    export PATH=$original_path
+}
+
