@@ -48,7 +48,7 @@ if [ -z "$print" ]; then
   { echo "# Load sub automatically by adding"
     echo "# the following to ${profile}:"
     echo
-    echo ". \"\$(${_SUB_ROOT}/bin/sub init -)\""
+    echo "eval \"\$(${_SUB_ROOT}/bin/sub init -)\""
     echo
   } >&2
 

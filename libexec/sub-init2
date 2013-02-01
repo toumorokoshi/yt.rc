@@ -29,6 +29,12 @@ _sub_source() {
 
 export SUB_PATH=`pwd`
 
+case "$0" in
+bash | zsh )
+  source ../completions/sub.$0
+  ;;
+esac
+
 function sub() {
     local original_path=$PATH
     local source_command=0
@@ -58,4 +64,3 @@ function sub() {
     esac
     export PATH=$original_path
 }
-
