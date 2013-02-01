@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# sub-init2 is a sub initializer that allows for sourcing scripts as well as
+# executing them
+# to instantiate with this, add:
+# tmp=`pwd`
+# cd SUB_PATH/ && . sub-init2 && cd $tmp
+# to your bashrc
 
 _sub_resolve_link() {
   $(type -p greadlink readlink | head -1) "$1"
