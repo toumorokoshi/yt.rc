@@ -14,6 +14,7 @@
      (goto-char (point-max))
      (eval-print-last-sexp))))
 
+
 ;; loading el-get-package list from another directory
 (load "~/.emacs.d/.emacs.elgetpackages")
 
@@ -124,3 +125,5 @@ el-get-sources)
 ;; jedi and epc installed as a system package
 (add-hook 'python-mode-hook 'jedi:setup)
 
+;; Changes Auctex to PDF mode by default
+(setq TeX-PDF-mode t)
