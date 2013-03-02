@@ -112,13 +112,18 @@
         :load-path ("tool-support/src/emacs")
         :features scala-mode-auto)
        (:name js2-mode
-        :website "https://github.com/mooz/js2-mode#readme"
-        :description "An improved JavaScript editing mode"
-        :type github
-        :pkgname "mooz/js2-mode"
-        :prepare (autoload 'js2-mode "js2-mode" nil t))
+              :website "https://github.com/mooz/js2-mode#readme"
+              :description "An improved JavaScript editing mode"
+              :type github
+              :pkgname "mooz/js2-mode"
+              :prepare (autoload 'js2-mode "js2-mode" nil t))
        (:name anything-git-goto :type elpa)
        (:name p4 :type elpa)
+       (:name go-mode
+              :description "Major mode for the Go programming language"
+              :type http
+              :url "http://go.googlecode.com/hg/misc/emacs/go-mode.el?r=tip"
+              :localname "go-mode.el")
        (:name auctex
         :website "http://www.gnu.org/software/auctex/"
         :description "AUCTeX is an extensible package for writing and formatting TeX files in GNU Emacs and XEmacs. It supports many different TeX macro packages, including AMS-TeX, LaTeX, Texinfo, ConTeXt, and docTeX (dtx files)."
