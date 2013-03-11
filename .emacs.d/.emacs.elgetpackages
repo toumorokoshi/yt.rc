@@ -138,4 +138,9 @@
                 "make")
         :load-path ("." "preview")
         :load  ("tex-site.el" "preview/preview-latex.el")
-        :info "doc")))
+        :info "doc")
+        (:name helm
+         :description "Emacs incremental and narrowing framework"
+         :type github
+         :pkgname "emacs-helm/helm"
+         :features helm-config)))

@@ -127,3 +127,30 @@ el-get-sources)
 
 ;; Changes Auctex to PDF mode by default
 (setq TeX-PDF-mode t)
+
+;; Bind helm-for-files to c-c c-f
+(require 'helm-files)
+(setq helm-idle-delay 0.01)
+(setq helm-input-idle-delay 0.01)
+;; (loop for ext in '(".elc$", ".pyc$")
+;;  do (add-to-list 'helm-c-boring-file-regexp-list ext))
+;; (add-to-list 'helm-c-boring-file-regexp-list "\.pyc$")
+
+(defcustom helm-for-files-preferred-list
+  '(helm-source-buffers-list
+    helm-source-recentf
+    helm-source-bookmarks
+    helm-source-file-cache
+    helm-source-files-in-current-dir
+    helm-source-locate)
+  "Your preferred sources to find files."
+  :type '(repeat (choice symbol))
+  :group 'helm-files)
+
+(defun helm-tsutsumi-files ()
+  "Custom helm find file search"
+  (interactive)
+  (let ((helm-ff-transformer-show-only-basename nil))
+    (helm-other-buffer helm-tsutsumi-files-preferred-list "*Helm Tsutsumi Files")))
+
+(define-key global-map (kbd "C-c C-f") 'helm-for-files)
