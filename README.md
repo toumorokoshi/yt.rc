@@ -14,14 +14,14 @@ Additional steps
 ----------------
 * add ssh key to github (~/.sprinter/toumorokoshi/github/github.pub)
 
-###########################################
-
 toumorokoshi's emacs environment 
+================================
 
 This the emacs environment I use to do almost anything coding-related. Feel free to fork it if you'd like,
 always looking for more improvements on this.
 
-NOTE
+NOTES
+-----
 
 I've categorized my emacs dependencies into two sections: with externals and without externals.
 
@@ -36,7 +36,8 @@ Anyway, I have .externals depending on .noexternals, so you only to use one:
 
 .emacs.externals (loads) -> .emacs.noexternals
 
-Externals to install:
+Externals to install
+--------------------
 
 jedi should be installed (python code complete):
 $ easy_install jedi
@@ -44,8 +45,3 @@ epc should be installed (python code complete):
 $ easy_install epc
 virtualenv should be installed (unused but required for install of jedi):
 $ easy_install virtualenv
-
-For now, packages must be installed via el-get-install directly. The list of packages are listed in order under .emacs.loadpackages2
-
-
-##############################################
