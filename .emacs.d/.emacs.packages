@@ -13,16 +13,20 @@
     auto-complete
     flymake
     flymake-cursor
+    flymake-go
     go-mode
     helm
     highlight-indentation
     jedi
     js2-mode
+    magit
     multiple-cursors
     p4
     scala-mode2
     rainbow-mode
+    visual-regexp
     yaml-mode
     yasnippet
-   )
-) "A list of packages to ensure are installed at launch.")
+   ) "A list of packages to ensure are installed at launch.")
+
+(provide 'toumorokoshi-packages)

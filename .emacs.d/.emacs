@@ -6,7 +6,7 @@
 (load "~/.emacs.d/.emacs.externals_tools") 
 (load "~/.emacs.d/.emacs.methods")
 (add-hook 'after-init-hook '(lambda ()
-  (load "~/.emacs.d/.emacs.loadpackages2")
+  (load "~/.emacs.d/.emacs.loadpackages")
   (load "~/.emacs.d/.emacs.noexternals")
   (ad-activate 'isearch-search)))
 (custom-set-variables
@@ -23,8 +23,3 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#242424" :foreground "#f6f3e8" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "bitstream" :family "Courier 10 Pitch")))))
 (put 'set-goal-column 'disabled nil)
-
-(require 'package)
-;; add melpa
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
