@@ -1,31 +1,27 @@
 ;; Setup ELPA package sources
-;; Switched over to el-get, we'll see if ELPA gets close to what I'm looking for.
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
-;; Check for el-get, install if not exists
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(unless (require 'el-get nil t)
-  (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
-     (goto-char (point-max))
-     (eval-print-last-sexp))))
+;; loading package list from another directory
+(load "~/.emacs.d/.emacs.packages")
 
+;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+(setq url-http-attempt-keepalives nil)
 
-;; loading el-get-package list from another directory
-(load "~/.emacs.d/.emacs.elgetpackages")
+(defun packages-installed-p ()
+  (loop for p in prelude-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
 
-;; Re-loading flymake xml until the package I install works.
-(load "~/.emacs.d/el-get/flymake/flymake.el")
+(unless (packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p toumorokoshi-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
 
-;; install any packages not installed yet
-(mapc (lambda (f)
-        (let ((name (plist-get f :name)))
-             (when (not (require name nil t)) (el-get-install name))))
-el-get-sources)
+(provide 'toumorokoshi-packages)
 
 ;; (let ((config (plist-get (elt el-get-sources 2) :config)))
 ;;      (funcall config)
