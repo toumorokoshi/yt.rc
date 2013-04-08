@@ -1,0 +1,156 @@
+;; Setup ELPA package sources
+(require 'cl)
+
+;; loading package list from another directory
+(load "~/.emacs.d/.emacs.packages")
+
+;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
+(setq url-http-attempt-keepalives nil)
+
+(defun packages-installed-p ()
+  (loop for p in toumorokoshi-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+
+(unless (packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p toumorokoshi-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+;; (let ((config (plist-get (elt el-get-sources 2) :config)))
+;;      (funcall config)
+;; )
+
+;; run "after" commands
+;; (mapc (lambda (f) (
+;;       (let ((config (plist-get f :config)))
+;;         (if (not (= config nil))
+;;           config nil))))
+;; el-get-sources)
+
+;; flymake-mode
+(global-set-key (kbd "C-; C-f") 'flymake-mode)  
+(defun flymake-get-tex-args (file-name)
+  (list "chktex" (list "-q" "-v0" filename))) (load-library "flymake-cursor")
+;; rainbow-mode
+;; (defun all-css-modes() (css-mode) (rainbow-mode)) 
+;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+;; highlight-indentation
+(add-hook 'python-mode-hook 'highlight-indentation-mode)
+;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)) 
+;; autocomplete
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+;; (setq ac-max-width 0.5)
+(require 'auto-complete-config)
+(ac-config-default)
+
+(defun ac-ropemacs-initialize ()
+  (autoload 'pymacs-apply "pymacs")
+  (autoload 'pymacs-call "pymacs")
+  (autoload 'pymacs-eval "pymacs" nil t)
+  (autoload 'pymacs-exec "pymacs" nil t)
+  (autoload 'pymacs-load "pymacs" nil t)
+  (pymacs-load "ropemacs" "rope-") t)
+
+(ac-ropemacs-initialize)
+
+;; (defun ac-ropemacs-candidates ()
+;;  (mapcar (lambda (completion)
+;;     (concat ac-prefix completion))
+;;   (rope-completions)))
+
+;; (ac-define-source nropemacs
+;;  '((candidates . ac-ropemacs-candidates)
+;;    (symbol     . "p")))
+
+;; (ac-define-source nropemacs-dot
+;;  '((candidates . ac-ropemacs-candidates)
+;;    (symbol     . "p")
+;;    (prefix     . c-dot)
+;;    (requires   . 0)))
+
+;; (defun ac-nropemacs-setup ()
+;;   (setq ac-sources (append '(ac-source-nropemacs
+;;                              ac-source-nropemacs-dot) ac-sources)))
+
+;; (add-hook 'python-mode-hook 'ac-nropemacs-setup)
+
+;; yasnippet
+(when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
+(require 'yasnippet)
+(yas/global-mode 1) 
+(yas/load-directory "~/.emacs.d/snippets")
+;; add snippets to autocomplete.el
+(setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+
+;; js2-mode
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;; Mark-multiple
+
+;; anything-git-goto
+(require 'anything-git-goto)
+(global-set-key (kbd "C-x C-g") 'anything-git-goto)
+
+;; p4
+(load-library "p4")
+
+;; Trying out jedi
+;; In order for jedi to work, we need:
+;; virtual env installed
+(load-library "jedi")
+(setq jedi:complete-on-dot t)
+(defun jedi-choose-executable ()
+  (interactive)
+  (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
+      (setq jedi:server-command
+            (list python-executable jedi:server-script))
+      (jedi:stop-server)))
+(add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
+;; Trying to get it working with buildout/virtualenv in a nice way.
+;; this requires:
+;; jedi and epc installed as a system package
+(add-hook 'python-mode-hook 'jedi:setup)
+
+;; Changes Auctex to PDF mode by default
+(setq TeX-PDF-mode t)
+
+;; Bind helm-for-files to c-c c-f
+(require 'helm-files)
+(setq helm-idle-delay 0.01)
+(setq helm-input-idle-delay 0.01)
+;; (loop for ext in '(".elc$", ".pyc$")
+;;  do (add-to-list 'helm-c-boring-file-regexp-list ext))
+;; (add-to-list 'helm-c-boring-file-regexp-list "\.pyc$")
+
+(defcustom helm-for-files-preferred-list
+  '(helm-source-buffers-list
+    helm-source-recentf
+    helm-source-bookmarks
+    helm-source-file-cache
+    helm-source-files-in-current-dir
+    helm-source-locate)
+  "Your preferred sources to find files."
+  :type '(repeat (choice symbol))
+  :group 'helm-files)
+
+(defun helm-tsutsumi-files ()
+  "Custom helm find file search"
+  (interactive)
+  (let ((helm-ff-transformer-show-only-basename nil))
+    (helm-other-buffer helm-tsutsumi-files-preferred-list "*Helm Tsutsumi Files")))
+
+(define-key global-map (kbd "C-c C-f") 'helm-for-files)
+
+;; visual-regexp
+(require 'visual-regexp)
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)

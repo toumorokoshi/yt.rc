@@ -1,0 +1,61 @@
+;; This file is for emacs configurations relating to files that must be installed on the filesystem to work
+;; The following applications must be installed:
+;; Syntax checking
+;;   pep8 (easy_install pep8)
+;;   pyflakes (easy_install pyflakes)
+;; this is from: http://www.plope.com/Members/chrism/flymake-mode
+(when (load "flymake" t)
+  (defun flymake-pychecker-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "~/.emacs.d/includes/pyflakespep8.py" (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pychecker-init)))
+;; tell flymake to load on python files
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks) 
+(delete '("\\.xml?\\'" flymake-xml-init) flymake-allowed-file-name-masks) 
+
+;; Java Flymake (requires java)
+(defun java-flymake-init()
+       (list "javac" (list (flymake-init-create-temp-buffer-copy
+				'flymake-create-temp-with-folder-structure))))
+(add-to-list 'flymake-allowed-file-name-masks '("\\.java$" java-flymake-init flymake-simple-cleanup))
+
+;; Code Completion
+;; rope (easy_install rope)
+;; ropemacs (easy_install http://bitbucket.org/agr/ropemacs/get/tip.gz)
+;; pymacs (install and make from source https://github.com/pinard/Pymacs/tarball/master)
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(pymacs-load "ropemacs" "rope-")
+(setq ropemacs-enable-autoimport t)
+
+(defun prefix-list-elements (list prefix)
+ (let (value)
+   (nreverse
+    (dolist (element list value)
+     (setq value (cons (format "%s%s" prefix element) value)))))) 
+
+(defvar ac-source-rope
+ '((candidates
+    . (lambda ()
+        (prefix-list-elements (rope-completions) ac-target))))
+        "Source for Rope") 
+
+;; (add-hook 'python-mode-hook
+;;          (lambda ()
+;;                 (set (make-local-variable 'ac-sources)
+;;                      (append ac-sources '(ac-source-rope))))) 
+
+
+;;(ac-ropemacs-initialize)
+;; (add-hook 'python-mode-hook
+;;         (lambda ()
+;; 	    (add-to-list 'ac-sources 'ac-source-ropemacs))) 

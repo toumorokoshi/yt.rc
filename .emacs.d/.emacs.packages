@@ -1,0 +1,32 @@
+;; defining the list of packages I want
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives 
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+
+(defvar toumorokoshi-packages
+  '(
+    anything-git-goto
+    auto-complete
+    flymake
+    flymake-cursor
+    flymake-go
+    go-mode
+    helm
+    highlight-indentation
+    jedi
+    js2-mode
+    magit
+    multiple-cursors
+    p4
+    scala-mode2
+    rainbow-mode
+    visual-regexp
+    yaml-mode
+    yasnippet
+   ) "A list of packages to ensure are installed at launch.")
+
+(provide 'toumorokoshi-packages)
