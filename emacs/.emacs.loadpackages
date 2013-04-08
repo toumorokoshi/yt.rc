@@ -154,3 +154,11 @@
 (require 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
+
+;; magit keybinding
+(require 'magit)
+(define-key global-map (kbd "C-c m") 'magit-status)
+
+;; go stuff
+(require 'flymake-go)
+(require 'go-autocomplete)

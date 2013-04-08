@@ -14,7 +14,9 @@
     flymake
     flymake-cursor
     flymake-go
+    go-autocomplete
     go-mode
+    hackernews
     helm
     highlight-indentation
     jedi
