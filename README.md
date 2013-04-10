@@ -1,5 +1,7 @@
 # sub: a delicious way to organize programs
 
+## toumorokoshi edition: this is for my very own customizations
+
 Sub is a model for setting up shell programs that use subcommands, like `git` or `rbenv` using bash. Making a sub does not require you to write shell scripts in bash, you can write subcommands in any scripting language you prefer.
 
 A sub program is run at the command line using this style:

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# SOURCE
+# Usage: sub w {directoryname}
+# Summary: A quick way to navigate to a repo inside your "workspace" location. 
+
+# provide sub completions
+if [ "$1" == "--complete" ]; then  
+    ls ~/workspace
+    exit
+fi
+
+cd ~/workspace/$1

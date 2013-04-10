@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# SOURCE
+# Usage: sub sp {featurename}
+# Summary: A quick way to navigate to the sprinter feature directories inside the 'toumorokoshi' workspace
+
+# provide sub completions
+if [ "$1" == "--complete" ]; then  
+    ls ~/.sprinter/toumorokoshi/features/
+    exit
+fi
+
+cd ~/.sprinter/toumorokoshi/features/$1
