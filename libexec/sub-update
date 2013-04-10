@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# SOURCE
+# Usage: sub updated
+# Summary: Updates sub, and the toumorokoshi environment
+
+# provide sub completions
+sprinter update toumorokoshi
+. ~/.sprinter/toumorokoshi/.rc
