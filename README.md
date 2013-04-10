@@ -53,15 +53,7 @@ Anyway, I have .externals depending on .noexternals, so you only to use one:
 Externals to install
 --------------------
 
-jedi should be installed (python code complete):
-$ easy_install jedi
-epc should be installed (python code complete):
-$ easy_install epc
-virtualenv should be installed (unused but required for install of jedi):
-$ easy_install virtualenv
+jedi and epc should be installed (python code complete):
 
-
-Installing compiz-fusion
-------------------------
-
-
+    easy_install jedi
+    easy_install epc
