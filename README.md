@@ -14,9 +14,23 @@ Additional steps
 ----------------
 * add ssh key to github (~/.sprinter/toumorokoshi/github/github.pub)
 
+Ubuntu 12.04 Specific Setup
+---------------------------
+
+Install compiz settings:
+
+    sudo apt-get install compiz compizconfig-settings-manager compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-plugins wmctrl
+
+To get to settings manager type:
+
+    ccsm
+
+The notable configuration is:
+
+* 'grid' for aero-like window snapping
+
 toumorokoshi's emacs environment 
 ================================
-
 This the emacs environment I use to do almost anything coding-related. Feel free to fork it if you'd like,
 always looking for more improvements on this.
 
@@ -45,3 +59,9 @@ epc should be installed (python code complete):
 $ easy_install epc
 virtualenv should be installed (unused but required for install of jedi):
 $ easy_install virtualenv
+
+
+Installing compiz-fusion
+------------------------
+
+
