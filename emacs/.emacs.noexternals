@@ -115,3 +115,6 @@
 ;; mapping find files recursive to a key for now
 
 (global-set-key (kbd "C-x g") 'find-name-dired)
+
+;; Remap M-x to the proper command
+(global-set-key (kbd "M-x") 'execute-extended-command)
