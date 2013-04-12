@@ -29,33 +29,33 @@
 ;; rope (easy_install rope)
 ;; ropemacs (easy_install http://bitbucket.org/agr/ropemacs/get/tip.gz)
 ;; pymacs (install and make from source https://github.com/pinard/Pymacs/tarball/master)
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
-
-(defun prefix-list-elements (list prefix)
- (let (value)
-   (nreverse
-    (dolist (element list value)
-     (setq value (cons (format "%s%s" prefix element) value)))))) 
-
-(defvar ac-source-rope
- '((candidates
-    . (lambda ()
-        (prefix-list-elements (rope-completions) ac-target))))
-        "Source for Rope") 
-
-;; (add-hook 'python-mode-hook
-;;          (lambda ()
-;;                 (set (make-local-variable 'ac-sources)
-;;                      (append ac-sources '(ac-source-rope))))) 
-
-
-;;(ac-ropemacs-initialize)
-;; (add-hook 'python-mode-hook
-;;         (lambda ()
-;; 	    (add-to-list 'ac-sources 'ac-source-ropemacs))) 
+;; (autoload 'pymacs-apply "pymacs")
+;; (autoload 'pymacs-call "pymacs")
+;; (autoload 'pymacs-eval "pymacs" nil t)
+;; (autoload 'pymacs-exec "pymacs" nil t)
+;; (autoload 'pymacs-load "pymacs" nil t)
+;; (pymacs-load "ropemacs" "rope-")
+;; (setq ropemacs-enable-autoimport t)
+;;
+;;(defun prefix-list-elements (list prefix)
+;; (let (value)
+;;   (nreverse
+;;    (dolist (element list value)
+;;     (setq value (cons (format "%s%s" prefix element) value)))))) 
+;;
+;;(defvar ac-source-rope
+;; '((candidates
+;;    . (lambda ()
+;;        (prefix-list-elements (rope-completions) ac-target))))
+;;        "Source for Rope") 
+;;
+;;;; (add-hook 'python-mode-hook
+;;;;          (lambda ()
+;;;;                 (set (make-local-variable 'ac-sources)
+;;;;                      (append ac-sources '(ac-source-rope))))) 
+;;
+;;
+;;;;(ac-ropemacs-initialize)
+;;;; (add-hook 'python-mode-hook
+;;;;         (lambda ()
+;;;; 	    (add-to-list 'ac-sources 'ac-source-ropemacs))) 

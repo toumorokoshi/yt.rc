@@ -9,6 +9,7 @@
 
 (defvar toumorokoshi-packages
   '(
+    ace-jump-mode
     anything-git-goto
     auto-complete
     flymake

@@ -51,15 +51,15 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(defun ac-ropemacs-initialize ()
-  (autoload 'pymacs-apply "pymacs")
-  (autoload 'pymacs-call "pymacs")
-  (autoload 'pymacs-eval "pymacs" nil t)
-  (autoload 'pymacs-exec "pymacs" nil t)
-  (autoload 'pymacs-load "pymacs" nil t)
-  (pymacs-load "ropemacs" "rope-") t)
+;;(defun ac-ropemacs-initialize ()
+;;  (autoload 'pymacs-apply "pymacs")
+;;  (autoload 'pymacs-call "pymacs")
+;;  (autoload 'pymacs-eval "pymacs" nil t)
+;;  (autoload 'pymacs-exec "pymacs" nil t)
+;;  (autoload 'pymacs-load "pymacs" nil t)
+;;  (pymacs-load "ropemacs" "rope-") t)
 
-(ac-ropemacs-initialize)
+;;(ac-ropemacs-initialize)
 
 ;; (defun ac-ropemacs-candidates ()
 ;;  (mapcar (lambda (completion)
@@ -162,3 +162,11 @@
 ;; go stuff
 (require 'flymake-go)
 (require 'go-autocomplete)
+
+;; multiple cursors
+(require 'Mark-multiple)
+(define-key global-map (kbd "C-c n") 'mc/mark-all-like-this)
+
+;; ace-jump-mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c a") 'ace-jump-mode)
