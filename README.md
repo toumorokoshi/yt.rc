@@ -50,6 +50,8 @@ Anyway, I have .externals depending on .noexternals, so you only to use one:
 
 .emacs.externals (loads) -> .emacs.noexternals
 
+Packages are now stored on .emacs.packages, and primarly uses package.el to install.
+
 Externals to install
 --------------------
 
