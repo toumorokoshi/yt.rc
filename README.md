@@ -50,6 +50,8 @@ Anyway, I have .externals depending on .noexternals, so you only to use one:
 
 .emacs.externals (loads) -> .emacs.noexternals
 
+Packages are now stored on .emacs.packages, and primarly uses package.el to install. I also primarily use Melpa as my main package repository, as most of those packages are built directly from the git repositories.
+
 Externals to install
 --------------------
 

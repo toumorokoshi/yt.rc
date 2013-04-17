@@ -51,38 +51,6 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(defun ac-ropemacs-initialize ()
-  (autoload 'pymacs-apply "pymacs")
-  (autoload 'pymacs-call "pymacs")
-  (autoload 'pymacs-eval "pymacs" nil t)
-  (autoload 'pymacs-exec "pymacs" nil t)
-  (autoload 'pymacs-load "pymacs" nil t)
-  (pymacs-load "ropemacs" "rope-") t)
-
-(ac-ropemacs-initialize)
-
-;; (defun ac-ropemacs-candidates ()
-;;  (mapcar (lambda (completion)
-;;     (concat ac-prefix completion))
-;;   (rope-completions)))
-
-;; (ac-define-source nropemacs
-;;  '((candidates . ac-ropemacs-candidates)
-;;    (symbol     . "p")))
-
-;; (ac-define-source nropemacs-dot
-;;  '((candidates . ac-ropemacs-candidates)
-;;    (symbol     . "p")
-;;    (prefix     . c-dot)
-;;    (requires   . 0)))
-
-;; (defun ac-nropemacs-setup ()
-;;   (setq ac-sources (append '(ac-source-nropemacs
-;;                              ac-source-nropemacs-dot) ac-sources)))
-
-;; (add-hook 'python-mode-hook 'ac-nropemacs-setup)
-
-;; yasnippet
 (when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
 (require 'yasnippet)
 (yas/global-mode 1) 
@@ -162,3 +130,14 @@
 ;; go stuff
 (require 'flymake-go)
 (require 'go-autocomplete)
+
+;; multiple cursors
+(require 'Mark-multiple)
+(define-key global-map (kbd "C-c n") 'mc/mark-all-like-this)
+
+;; ace-jump-mode
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c a") 'ace-jump-mode)
+
+(require 'golden-ratio)
+(golden-ratio-enable)
