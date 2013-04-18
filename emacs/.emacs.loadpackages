@@ -132,7 +132,7 @@
 (require 'go-autocomplete)
 
 ;; multiple cursors
-(require 'Mark-multiple)
+(require 'multiple-cursors)
 (define-key global-map (kbd "C-c n") 'mc/mark-all-like-this)
 
 ;; ace-jump-mode

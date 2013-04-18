@@ -17,6 +17,7 @@
     flymake-go
     go-autocomplete
     go-mode
+    golden-ratio
     hackernews
     helm
     highlight-indentation
