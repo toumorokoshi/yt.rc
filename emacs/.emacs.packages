@@ -23,6 +23,7 @@
     highlight-indentation
     jedi
     js2-mode
+    linum-relative
     magit
     multiple-cursors
     p4

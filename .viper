@@ -22,3 +22,5 @@
 ;; Change shift-width to 4
 (setq viper-shift-width 4) ; don't touch or else...
 
+;; get rid of that stupid toggle key
+;(setq viper-toggle-key "\C-q")
