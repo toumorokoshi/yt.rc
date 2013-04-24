@@ -12,6 +12,7 @@
     ace-jump-mode
     anything-git-goto
     auto-complete
+    color-theme
     flymake
     flymake-cursor
     flymake-go

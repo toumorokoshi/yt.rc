@@ -1,14 +1,14 @@
 (deftheme Greyhound
-  "Created 2012-03-19 by Yusuke Tsutsumi")
+  "Created 2013-04-24.")
 
 (custom-theme-set-faces
  'Greyhound
- '(default ((t (:background "#242424" :foreground "#f6f3e8"))))
  '(cursor ((t (:background "#AAAAAA" :foreground "#f6f3e8"))))
  '(region ((t (:background "#444444" :foreground "#f6f3e8"))))
- '(mode-line ((t (:background "#444444" :foreground "#f6f3e8"))))
- '(mode-line-inactive ((t (:background "#444444" :foreground "#857b6f"))))
- '(fringe ((t (:background "#303030"))))
+ '(mode-line ((t (:background "#444444" :foreground "#f6f3e8" :box '(:color "#444444" :line-height 10)))))
+ '(mode-line-inactive ((t (:background "#444444" :foreground "#857b64" :box '(:color "#444444" :line-height 10)))))
+ '(fringe ((t (:background "#000000"))))
+ '(vertcal-border ((t (:background "#000000"))))
  '(minibuffer-prompt ((t (:foreground "#e5786d"))))
  '(font-lock-builtin-face ((t (:foreground "#e5786d"))))
  '(font-lock-comment-face ((t (:foreground "#99968b"))))
@@ -24,6 +24,7 @@
  '(link ((t (:foreground "#8ac6f2" :underline t))))
  '(link-visited ((t (:foreground "#e5786d" :underline t))))
  '(button ((t (:background "#444444" :foreground "#f6f3e8" :underline t :weight bold))))
- '(header-line ((t (:background "#303030" :foreground "#e7f6da")))))
+ '(header-line ((t (:background "#303030" :foreground "#e7f6da"))))
+ '(default ((t (:background "#000000" :foreground "#f6f3e8")))))
 
 (provide-theme 'Greyhound)
