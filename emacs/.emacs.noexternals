@@ -125,3 +125,5 @@
 (global-set-key (kbd "C-z") 'toumorokoshi-custom-map)
 (global-set-key (kbd "C-z C-l") 'linum-mode)
 
+;; truncate long lines
+(set-default 'truncate-lines t)

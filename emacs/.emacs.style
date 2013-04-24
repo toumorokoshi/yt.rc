@@ -5,9 +5,6 @@
  	 	(load-theme 'Greyhound t)
  ) 
 )
-
-
-
 ;; (defun color-theme-hash ()
 ;;   (interactive)
 ;;   (color-theme-install
@@ -74,8 +71,4 @@
 ;; (require 'color-theme)
 ;; (color-theme-hash)
 
-(set-fringe-mode 0)
-
-(set-face-attribute 'vertical-border
-                    nil
-                    :foreground "#000000")
+(set-fringe-mode 1)

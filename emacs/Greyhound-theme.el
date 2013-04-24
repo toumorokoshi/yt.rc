@@ -5,10 +5,9 @@
  'Greyhound
  '(cursor ((t (:background "#AAAAAA" :foreground "#f6f3e8"))))
  '(region ((t (:background "#444444" :foreground "#f6f3e8"))))
- '(mode-line ((t (:background "#444444" :foreground "#f6f3e8" :box '(:color "#444444" :line-height 10)))))
- '(mode-line-inactive ((t (:background "#444444" :foreground "#857b64" :box '(:color "#444444" :line-height 10)))))
- '(fringe ((t (:background "#000000"))))
- '(vertcal-border ((t (:background "#000000"))))
+ '(mode-line ((t (:background "#444444" :foreground "#FFE64D" :box '(:color "#444444" :line-width 10)))))
+ '(mode-line-inactive ((t (:background "#444444" :foreground "#DF740C" :box '(:color "#444444" :line-width 10)))))
+ '(vertical-border ((t (:foreground "#CCC"))))
  '(minibuffer-prompt ((t (:foreground "#e5786d"))))
  '(font-lock-builtin-face ((t (:foreground "#e5786d"))))
  '(font-lock-comment-face ((t (:foreground "#99968b"))))
@@ -25,7 +24,7 @@
  '(link-visited ((t (:foreground "#e5786d" :underline t))))
  '(button ((t (:background "#444444" :foreground "#f6f3e8" :underline t :weight bold))))
  '(header-line ((t (:background "#303030" :foreground "#e7f6da"))))
- '(default ((t (:background "#000000" :foreground "#f6f3e8")))))
+ '(default ((t (:background "#171717" :foreground "#f6f6f6")))))
 
 ;; powerlines - looks cool
 (defun arrow-right-xpm (color1 color2)
@@ -119,20 +118,20 @@ static char * arrow_right[] = {
 
   (make-face 'mode-line-color-1)
   (set-face-attribute 'mode-line-color-1 nil
-                      :foreground "#fff"
+                      :foreground "#FFE64D"
                       :background color1)
 
   (make-face 'mode-line-color-2)
   (set-face-attribute 'mode-line-color-2 nil
-                      :foreground "#fff"
+                      :foreground "#DF740C"
                       :background color2)
 
   (set-face-attribute 'mode-line nil
-                      :foreground "#fff"
+                      :foreground "#6FC3DF"
                       :background "#222"
                       :box nil)
   (set-face-attribute 'mode-line-inactive nil
-                      :foreground "#fff"
+                      :foreground "#6FC3DFf"
                       :background color2))
 
 (provide 'conf-modeline)

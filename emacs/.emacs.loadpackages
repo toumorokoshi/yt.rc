@@ -143,4 +143,5 @@
 (golden-ratio-enable)
 
 (require 'linum-relative)
+(linum-mode 1)
 
