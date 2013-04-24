@@ -107,7 +107,7 @@ static char * arrow_right[] = {
                                  global-mode-string))
 
                        ;; Justify right by filling with spaces to right fringe - 16
-                       ;; (16 should be computed rahter than hardcoded)
+                       ;; (16 should be computed rather than hardcoded)
                        '(:eval (propertize " " 'display '((space :align-to (- right-fringe 20)))))
 
                        '(:eval (concat (propertize " " 'display arrow-left-2)
