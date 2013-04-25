@@ -6,7 +6,7 @@
  '(cursor ((t (:background "#AAAAAA" :foreground "#f6f3e8"))))
  '(region ((t (:background "#444444" :foreground "#f6f3e8"))))
  '(mode-line ((t (:background "#444444" :foreground "#FFE64D" :box (:color "#444444" :line-width 6)))))
- '(mode-line-inactive ((t (:background "#444444" :foreground "#DF740C" :box (:color "#444444" :line-width 6)))))
+ '(mode-line-inactive ((t (:background "#444444" :foreground "#6FC3DF" :box (:color "#444444" :line-width 6)))))
  '(vertical-border ((t (:foreground "#CCC"))))
  '(minibuffer-prompt ((t (:foreground "#e5786d"))))
  '(font-lock-builtin-face ((t (:foreground "#e5786d"))))
@@ -24,6 +24,11 @@
  '(link-visited ((t (:foreground "#e5786d" :underline t))))
  '(button ((t (:background "#444444" :foreground "#f6f3e8" :underline t :weight bold))))
  '(header-line ((t (:background "#303030" :foreground "#e7f6da"))))
+ ;; faces for powerline
+ '(powerline-active1 ((t (:foreground "#DF740C" :background "#000000" :inherit mode-line))))
+ '(powerline-active2 ((t (:foreground "#FFE64D" :background "#444444" :inherit mode-line))))
+ '(powerline-inactive1 ((t (:background "#000000" :inherit mode-line-inactive))))
+ '(powerline-inactive2 ((t (:background "#444444" :inherit mode-line-inactive))))
  '(default ((t (:background "#171717" :foreground "#f6f6f6")))))
 
 ;; ;; powerlines - looks cool
