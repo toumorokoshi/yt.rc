@@ -1,10 +1,12 @@
 ;; For reference
 (setq ght/tronyellow "#F9E30B")
+(setq ght/tronblue "#81E7F8")
+
 
 (deftheme Greyhound
   "Created 2013-04-24.")
-
-
+(let ((special-fg '(:foreground ,ght/tronyellow))
+      (special-second-fg '(:foreground ,ght/tronblue)))
 
 (custom-theme-set-faces
  'Greyhound
@@ -30,120 +32,11 @@
  '(button ((t (:background "#444444" :foreground "#f6f3e8" :underline t :weight bold))))
  '(header-line ((t (:background "#303030" :foreground "#e7f6da"))))
  ;; faces for powerline
- '(powerline-active1 ((t (:foreground "#F9E30B" :background "#000000" :inherit mode-line))))
- '(powerline-active2 ((t (:foreground "#FFE64D" :background "#444444" :inherit mode-line))))
+ '(powerline-active1 ((t (,@special-fg :background "#000000" :inherit mode-line))))
+ '(powerline-active2 ((t (,@special-second-fg :background "#444444" :inherit mode-line))))
  '(powerline-inactive1 ((t (:background "#000000" :inherit mode-line-inactive))))
  '(powerline-inactive2 ((t (:background "#444444" :inherit mode-line-inactive))))
  '(default ((t (:background "#171717" :foreground "#f6f6f6")))))
-
-;; ;; powerlines - looks cool
-;; (defun arrow-right-xpm (color1 color2)
-;;   "Return an XPM right arrow string representing."
-;;   (format "/* XPM */
-;; static char * arrow_right[] = {
-;; \"12 18 2 1\",
-;; \". c %s\",
-;; \"  c %s\",
-;; \".           \",
-;; \"..          \",
-;; \"...         \",
-;; \"....        \",
-;; \".....       \",
-;; \"......      \",
-;; \".......     \",
-;; \"........    \",
-;; \".........   \",
-;; \".........   \",
-;; \"........    \",
-;; \".......     \",
-;; \"......      \",
-;; \".....       \",
-;; \"....        \",
-;; \"...         \",
-;; \"..          \",
-;; \".           \"};"  color1 color2))
-
-;; (defun arrow-left-xpm (color1 color2)
-;;   "Return an XPM right arrow string representing."
-;;   (format "/* XPM */
-;; static char * arrow_right[] = {
-;; \"12 18 2 1\",
-;; \". c %s\",
-;; \"  c %s\",
-;; \"           .\",
-;; \"          ..\",
-;; \"         ...\",
-;; \"        ....\",
-;; \"       .....\",
-;; \"      ......\",
-;; \"     .......\",
-;; \"    ........\",
-;; \"   .........\",
-;; \"   .........\",
-;; \"    ........\",
-;; \"     .......\",
-;; \"      ......\",
-;; \"       .....\",
-;; \"        ....\",
-;; \"         ...\",
-;; \"          ..\",
-;; \"           .\"};"  color2 color1))
-
-
-;; (defvar mode-line-show-minor-modes nil)
-
-;; (let*
-;;     ((color1 "#000")
-;;      (color2 "#111"))
-
-;;   (setq arrow-right-1 (create-image (arrow-right-xpm color1 color2) 'xpm t :ascent 'center))
-;;   (setq arrow-right-2 (create-image (arrow-right-xpm color2 "None") 'xpm t :ascent 'center))
-;;   (setq arrow-left-1  (create-image (arrow-left-xpm color2 color1) 'xpm t :ascent 'center))
-;;   (setq arrow-left-2  (create-image (arrow-left-xpm "None" color2) 'xpm t :ascent 'center))
-
-;;   (setq-default mode-line-format
-;;                 (list  '(:eval (concat (propertize " %* %I %b" 'face 'mode-line-color-1)
-;;                                        (propertize " " 'display arrow-right-1)))
-;;                        '(:eval (concat (propertize " %[%m%] " 'face 'mode-line-color-2
-;;                                                    'mouse-face 'mode-line-color-2
-;;                                                    'local-map (make-mode-line-mouse-map
-;;                                                                'mouse-1 (lambda () (interactive)
-;;                                                                           (setq mode-line-show-minor-modes
-;;                                                                                 (not mode-line-show-minor-modes))
-;;                                                                           (redraw-modeline))))
-;;                                        (propertize " " 'display arrow-right-2)))
-
-;;                        '(:eval (if mode-line-show-minor-modes mode-line-modes
-;;                                  global-mode-string))
-
-;;                        ;; Justify right by filling with spaces to right fringe - 16
-;;                        ;; (16 should be computed rather than hardcoded)
-;;                        '(:eval (propertize " " 'display '((space :align-to (- right-fringe 20)))))
-
-;;                        '(:eval (concat (propertize " " 'display arrow-left-2)
-;;                                        (propertize " %6p " 'face 'mode-line-color-2)))
-;;                        '(:eval (concat (propertize " " 'display arrow-left-1)
-;;                                        (propertize "%4l:%2c      " 'face 'mode-line-color-1)))
-;;                        ))
-
-;;   (make-face 'mode-line-color-1)
-;;   (set-face-attribute 'mode-line-color-1 nil
-;;                       :foreground "#FFE64D"
-;;                       :background color1)
-
-;;   (make-face 'mode-line-color-2)
-;;   (set-face-attribute 'mode-line-color-2 nil
-;;                       :foreground "#DF740C"
-;;                       :background color2)
-
-;;   (set-face-attribute 'mode-line nil
-;;                       :foreground "#6FC3DF"
-;;                       :background "#222"
-;;                       :box nil)
-;;   (set-face-attribute 'mode-line-inactive nil
-;;                       :foreground "#6FC3DFf"
-;;                       :background color2))
-
-;; (provide 'conf-modeline)
+)
 
 (provide-theme 'Greyhound)
