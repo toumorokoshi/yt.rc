@@ -1,5 +1,10 @@
+;; For reference
+(setq ght/tronyellow "#F9E30B")
+
 (deftheme Greyhound
   "Created 2013-04-24.")
+
+
 
 (custom-theme-set-faces
  'Greyhound
@@ -25,7 +30,7 @@
  '(button ((t (:background "#444444" :foreground "#f6f3e8" :underline t :weight bold))))
  '(header-line ((t (:background "#303030" :foreground "#e7f6da"))))
  ;; faces for powerline
- '(powerline-active1 ((t (:foreground "#DF740C" :background "#000000" :inherit mode-line))))
+ '(powerline-active1 ((t (:foreground "#F9E30B" :background "#000000" :inherit mode-line))))
  '(powerline-active2 ((t (:foreground "#FFE64D" :background "#444444" :inherit mode-line))))
  '(powerline-inactive1 ((t (:background "#000000" :inherit mode-line-inactive))))
  '(powerline-inactive2 ((t (:background "#444444" :inherit mode-line-inactive))))
