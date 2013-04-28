@@ -1,6 +1,8 @@
-;; For reference
+;; List of colors to use
 (setq ght/tronyellow "#F9E30B")
 (setq ght/tronblue "#81E7F8")
+(setq ght/tronred "#E25A35")
+(setq ght/matrixgreen "#00CC00")
 (setq ght/gray-black "#444444")
 (setq ght/black "#000000")
 
@@ -16,7 +18,7 @@
 (custom-theme-set-faces
  'Greyhound
  '(cursor ((t (:background "#AAAAAA" :foreground "#f6f3e8"))))
- '(region ((t (,@special-bg :foreground "#f6f3e8"))))
+ '(region ((t (:background "#444444" :foreground "#f6f3e8"))))
  '(mode-line ((t (:background "#444444" :foreground "#FFE64D" :box (:color "#444444" :line-width 6)))))
  '(mode-line-inactive ((t (:background "#444444" :foreground "#6FC3DF" :box (:color "#444444" :line-width 6)))))
  '(vertical-border ((t (:foreground "#CCC"))))
