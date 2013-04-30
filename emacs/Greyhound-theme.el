@@ -43,7 +43,7 @@
  '(powerline-active2 ((t (,@special-second-fg ,@special-bg :inherit mode-line))))
  '(powerline-inactive1 ((t (,@special-second-bg :inherit mode-line-inactive))))
  '(powerline-inactive2 ((t (,@special-bg :inherit mode-line-inactive))))
- '(default ((t (:background "#171717" :foreground "#f6f6f6")))))
+ '(default ((t (:background "#171717" :foreground "#f6f6f6" :height 100)))))
 )
 
 (provide-theme 'Greyhound)
