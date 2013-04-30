@@ -121,9 +121,9 @@
 
 ;; sets a map for linum mode
 ;; also disables the annoying Ctrl Z which returns me to regular emacs from viper
-(define-prefix-command 'toumorokoshi-custom-map)
-(global-set-key (kbd "C-z") 'toumorokoshi-custom-map)
-(global-set-key (kbd "C-z C-l") 'linum-mode)
+;; (define-prefix-command 'toumorokoshi-custom-map)
+;; (global-set-key (kbd "C-z") 'toumorokoshi-custom-map)
+;; (global-set-key (kbd "C-z C-l") 'linum-mode)
 
 ;; truncate long lines
 (set-default 'truncate-lines t)
