@@ -118,6 +118,7 @@
 
 ;; Remap M-x to the proper command
 (global-set-key (kbd "M-x") 'execute-extended-command)
+<<<<<<< Updated upstream
 
 ;; sets a map for linum mode
 ;; also disables the annoying Ctrl Z which returns me to regular emacs from viper
@@ -127,3 +128,5 @@
 
 ;; truncate long lines
 (set-default 'truncate-lines t)
+=======
+>>>>>>> Stashed changes
