@@ -48,3 +48,11 @@
     )
   )
 )
+
+
+;; https://github.com/benma/emacs.d/blob/a22f73ee26473bf94775f04c3f969523f6bbb145/init.el#L333
+(defun whack-whitespace ()
+  "Delete all white space from point to the next word."
+  (interactive nil)
+  (when (re-search-forward "[ \t\n]+" nil t)
+    (replace-match "" nil nil)))

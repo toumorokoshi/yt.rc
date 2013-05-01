@@ -140,6 +140,7 @@
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c a") 'ace-jump-mode)
 
+;; Golden Ratio mode
 (require 'golden-ratio)
 (golden-ratio-enable)
 

@@ -129,3 +129,6 @@
 
 ;; truncate long lines
 (set-default 'truncate-lines t)
+
+;; add whack whitespace
+(global-set-key "\C-l" 'whack-whitespace)
