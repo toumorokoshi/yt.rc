@@ -132,3 +132,10 @@
 
 ;; add whack whitespace
 (global-set-key "\C-l" 'whack-whitespace)
+
+;; cedet
+;; (require 'cedet)
+;; (global-semantic-idle-completions-mode t)
+;; (global-semantic-decoration-mode t)
+;; (global-semantic-highlight-func-mode t)
+;; (global-semantic-show-unmatched-syntax-mode t)
