@@ -4,9 +4,15 @@
 # Summary: A quick way to navigate to a repo inside your "workspace" location. 
 
 # provide sub completions
+dir=workspace
+if [ ! -d $dir ]
+then
+    dir=Workspace
+fi
+
 if [ "$1" == "--complete" ]; then  
-    ls ~/workspace
+    ls ~/$dir
     exit
 fi
 
-cd ~/workspace/$1
+cd ~/$dir/$1
