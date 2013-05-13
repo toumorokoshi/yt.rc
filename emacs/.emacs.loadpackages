@@ -148,5 +148,5 @@
 (linum-mode 1)
 
 ;; get my powerline on
-(require 'powerline)
-(powerline-default-theme)
+;; (require 'powerline)
+;; (powerline-default-theme)
