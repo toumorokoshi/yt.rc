@@ -3,4 +3,4 @@
 # key: pdb
 # contributor: Yusuke Tsutsumi
 # --
-import pdb; pdb.set_trace()
+import pdb; pdb.set_trace()$0
