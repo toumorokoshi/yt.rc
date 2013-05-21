@@ -135,6 +135,7 @@
 ;; multiple cursors
 (require 'multiple-cursors)
 (define-key global-map (kbd "C-c n") 'mc/mark-all-like-this)
+(define-key global-map (kbd "M-n") 'mc/mark-next-lines)
 
 ;; ace-jump-mode
 (require 'ace-jump-mode)
@@ -150,3 +151,5 @@
 ;; get my powerline on
 ;; (require 'powerline)
 ;; (powerline-default-theme)
+;; (add-to-list 'load-path "~/Workspace/go-snippets")
+;; (require 'go-snippets)
