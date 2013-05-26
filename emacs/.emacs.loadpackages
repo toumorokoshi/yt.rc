@@ -153,3 +153,11 @@
 ;; (powerline-default-theme)
 ;; (add-to-list 'load-path "~/Workspace/go-snippets")
 ;; (require 'go-snippets)
+(require 'ido-vertical-mode)
+(ido-vertical-mode)
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)

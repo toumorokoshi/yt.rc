@@ -13,6 +13,7 @@
     anything-git-goto
     auto-complete
     color-theme
+    flx
     flymake
     flymake-cursor
     flymake-go
@@ -22,6 +23,7 @@
     hackernews
     helm
     highlight-indentation
+    ido-vertical-mode
     jedi
     js2-mode
     linum-relative
