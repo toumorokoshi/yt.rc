@@ -19,6 +19,7 @@
     flymake-go
     go-autocomplete
     go-mode
+    go-snippets
     golden-ratio
     hackernews
     helm
