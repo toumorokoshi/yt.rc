@@ -161,3 +161,9 @@
 (flx-ido-mode 1)
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
+
+;; web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(setq web-mode-engine-alist
+      '(("django" . "\\.html\\'")))
