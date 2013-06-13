@@ -1,0 +1,34 @@
+function parse_git_dirty_color {
+    git_bare_string='fatal: This operation must be run in a work tree'
+    git_clean_string='nothing to commit'
+    git_merge_string='Unmerged paths'
+    git_status_string=`git status 2>&1 | grep -E -o "$git_clean_string|$git_merge_string|$git_bare_string"`
+
+    if [ "$git_clean_string" == "$git_status_string" ]; then
+        # No changes present
+        echo "00;37" # white
+    elif [ "$git_bare_string" == "$git_status_string" ]; then
+        # Bare repository
+        echo "00;37" # white
+    elif [ "$git_merge_string" == "$git_status_string" ]; then
+        # Open merge
+        echo "00;31" # red
+    else
+        # Changes present
+        echo "02;35" # purple
+        #echo "[$git_bare_string][$git_status_string]"
+    fi
+    unset git_status_string git_bare_string git_clean_string git_merge_string
+}
+function parse_git_branch {
+    git_bare_string='fatal: This operation must be run in a work tree'
+    git_status_string=`git status 2>&1 | grep -E -o "$git_bare_string"`
+    if [ "$git_bare_string" == "$git_status_string" ]; then
+        echo "bare repository"
+    else
+        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
+    fi
+    unset git_status_string git_bare_string
+}
+
+PS1='\[\033[01;32m\]\w\[\033[00m\]|\[\033[$(parse_git_dirty_color)m\]$(parse_git_branch)\[\033[00m\]\$ '
