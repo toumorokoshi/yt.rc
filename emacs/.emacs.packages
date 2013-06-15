@@ -27,6 +27,7 @@
     ido-vertical-mode
     jedi
     js2-mode
+    less-css-mode
     linum-relative
     magit
     multiple-cursors
