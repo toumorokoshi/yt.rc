@@ -31,4 +31,9 @@ function parse_git_branch {
     unset git_status_string git_bare_string
 }
 
-PS1='\[\033[01;32m\]\w\[\033[00m\]|\[\033[$(parse_git_dirty_color)m\]$(parse_git_branch)\[\033[00m\]\$ '
+function parse_git_branch {
+}
+
+// PS1='\[\033[01;32m\]\w\[\033[00m\]|\[\033[$(parse_git_dirty_color)m\]$(parse_git_branch)\[\033[00m\]\$ '
+//PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+PS1="\u:\w$ "
