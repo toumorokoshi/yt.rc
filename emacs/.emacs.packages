@@ -12,6 +12,7 @@
     ace-jump-mode
     anything-git-goto
     auto-complete
+    butler
     color-theme
     flx
     flymake
