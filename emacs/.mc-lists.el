@@ -7,8 +7,13 @@
         viper-Append
         viper-backward-char
         viper-backward-word
+        viper-beginning-of-line
         viper-del-backward-char-in-insert
+        viper-delete-char
+        viper-digit-argument
         viper-forward-char
+        viper-forward-word
+        viper-goto-line
         viper-insert
         viper-intercept-ESC-key
         viper-previous-line

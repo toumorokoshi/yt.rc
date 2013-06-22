@@ -1,4 +1,16 @@
 # Basic colors
+RED_CORE="0;31m"
+IRED_CORE="0;91m"
+CYAN_CORE="0;36m"
+ICYAN_CORE="0;96m"
+GREEN_CORE="0;32m"
+IGREEN_CORE="0;92m"
+YELLOW_CORE="0;33m"
+IYELLOW_CORE="0;93m"
+PURPLE_CORE="0;35m"
+IPURPLE_CORE="0;95m"
+BLACK_CORE="0;30m"
+RESET_CORE="0;0m"
 RED="\[\033[0;31m\]"
 IRED="\[\033[0;91m\]"
 CYAN="\[\033[0;36m\]"
@@ -16,22 +28,20 @@ function parse_git_dirty_color {
     git_bare_string='fatal: This operation must be run in a work tree'
     git_clean_string='nothing to commit'
     git_merge_string='Unmerged paths'
-    echo `git status`
-    git_status_string=`git status 2>&1 | grep -E -o "$git_clean_string|$git_merge_string|$git_bare_string"`
+    git_status="$(git status 2> /dev/null)"
 
-    if [ "$git_clean_string" == "$git_status_string" ]; then
+    if [[ ${git_status} =~ ${git_clean_string} ]]; then
         # No changes present
-        echo $RESET
+        echo "$IGREEN_CORE"
     elif [ "$git_bare_string" == "$git_status_string" ]; then
         # Bare repository
-        echo $RESET
+        echo "$RESET_CORE"
     elif [ "$git_merge_string" == "$git_status_string" ]; then
         # Open merge
-        echo $RED
+        echo "$IRED_CORE"
     else
         # Changes present
-        echo $PURPLE
-        #echo "[$git_bare_string][$git_status_string]"
+        echo "$IPURPLE_CORE"
     fi
     unset git_status_string git_bare_string git_clean_string git_merge_string
 }
@@ -62,4 +72,4 @@ function parse_git_repo {
 }
 
 
-PS1="$IYELLOW\u:\w\[$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
+PS1="$IYELLOW\u:\w\\[\033[\$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
