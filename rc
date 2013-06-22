@@ -1,39 +1,65 @@
+# Basic colors
+RED="\[\033[0;31m\]"
+IRED="\[\033[0;91m\]"
+CYAN="\[\033[0;36m\]"
+ICYAN="\[\033[0;96m\]"
+GREEN="\[\033[0;32m\]"
+IGREEN="\[\033[0;92m\]"
+YELLOW="\[\033[0;33m\]"
+IYELLOW="\[\033[0;93m\]"
+PURPLE="\[\033[0;35m\]"
+IPURPLE="\[\033[0;95m\]"
+BLACK="\[\033[0;30m\]"
+RESET="\[\033[0;0m\]"
+
 function parse_git_dirty_color {
     git_bare_string='fatal: This operation must be run in a work tree'
     git_clean_string='nothing to commit'
     git_merge_string='Unmerged paths'
+    echo `git status`
     git_status_string=`git status 2>&1 | grep -E -o "$git_clean_string|$git_merge_string|$git_bare_string"`
 
     if [ "$git_clean_string" == "$git_status_string" ]; then
         # No changes present
-        echo "00;37" # white
+        echo $RESET
     elif [ "$git_bare_string" == "$git_status_string" ]; then
         # Bare repository
-        echo "00;37" # white
+        echo $RESET
     elif [ "$git_merge_string" == "$git_status_string" ]; then
         # Open merge
-        echo "00;31" # red
+        echo $RED
     else
         # Changes present
-        echo "02;35" # purple
+        echo $PURPLE
         #echo "[$git_bare_string][$git_status_string]"
     fi
     unset git_status_string git_bare_string git_clean_string git_merge_string
 }
-function parse_git_branch {
-    git_bare_string='fatal: This operation must be run in a work tree'
-    git_status_string=`git status 2>&1 | grep -E -o "$git_bare_string"`
-    if [ "$git_bare_string" == "$git_status_string" ]; then
-        echo "bare repository"
+
+#used in the prompt command below to display what git branch i'm in.
+function has_git_branch {
+    local branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
+    if [ "x$branch" = "x" ]; then 
+        return 0
     else
-        git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
+        return 1
     fi
-    unset git_status_string git_bare_string
 }
 
-function parse_git_branch {
+# Echos the repo that you are in. 
+# Might not work if you don't have a tracking branch
+function parse_git_repo {    
+    has_git_branch
+    if [ $? -eq 1 ]; then
+        local repo=$(git remote -v  2> /dev/null|head -n 1)
+        local repo_name=${repo%.git*}
+        local repo_name=${repo_name##*/}
+        if [ "x$repo_name" != "x" ];
+        then
+            echo " ($repo_name)"
+        fi
+    fi    
 }
 
-// PS1='\[\033[01;32m\]\w\[\033[00m\]|\[\033[$(parse_git_dirty_color)m\]$(parse_git_branch)\[\033[00m\]\$ '
-//PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-PS1="\u:\w$ "
+
+PS1="$IYELLOW\u:\w\[$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
