@@ -69,9 +69,6 @@
 (require 'anything-git-goto)
 (global-set-key (kbd "C-x C-g") 'anything-git-goto)
 
-;; p4
-(load-library "p4")
-
 ;; Trying out jedi
 ;; In order for jedi to work, we need:
 ;; virtual env installed
