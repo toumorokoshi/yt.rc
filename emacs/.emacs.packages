@@ -15,6 +15,7 @@
     butler
     color-theme
     flx
+    flx-ido
     flymake
     flymake-cursor
     flymake-go
