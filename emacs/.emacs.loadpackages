@@ -164,3 +164,13 @@
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (setq web-mode-engine-alist
       '(("django" . "\\.html\\'")))
+
+;; p4-mode, for when it exists
+(when (require 'p4 nil t)
+  (require 'p4)
+)
+
+;; butler-mode, for when it exists
+(when (require 'butler nil t)
+  (require 'butler)
+)
