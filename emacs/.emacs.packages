@@ -14,6 +14,7 @@
     auto-complete
     butler
     color-theme
+    emmet-mode
     flx
     flx-ido
     flymake

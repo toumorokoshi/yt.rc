@@ -162,6 +162,7 @@
 ;; web-mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
 (setq web-mode-engine-alist
       '(("django" . "\\.html\\'")))
 
@@ -174,3 +175,9 @@
 (when (require 'butler nil t)
   (require 'butler)
 )
+
+;; emmet-mode
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
