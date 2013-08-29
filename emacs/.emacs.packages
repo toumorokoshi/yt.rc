@@ -14,7 +14,11 @@
     auto-complete
     butler
     color-theme
+<<<<<<< HEAD
     emmet-mode
+=======
+    dired+
+>>>>>>> Adding dired+
     flx
     flx-ido
     flymake
