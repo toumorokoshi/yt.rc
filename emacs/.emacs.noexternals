@@ -7,6 +7,9 @@
 ;;  (load "~/.emacs.elget") 
 ;;  (ad-activate 'isearch-search)))
 
+;; C-c <key> is reserved for the user?
+;; http://www.reddit.com/r/emacs/comments/1kzv76/looking_for_free_keys_to_occupy/
+
 ;; don't add newline
 (setq require-final-newline nil)
 

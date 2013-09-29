@@ -56,3 +56,10 @@
   (interactive nil)
   (when (re-search-forward "[ \t\n]+" nil t)
     (replace-match "" nil nil)))
+
+(defun align-repeat (start end regexp)
+  "Repeat alignment with respect to 
+     the given regular expression."
+  (interactive "r\nsAlign regexp: ")
+  (align-regexp start end 
+                (concat "\\(\\s-*\\)" regexp) 1 1 t))
