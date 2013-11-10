@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+# name: h3
+# key: h3
+# contributor: Yusuke Tsutsumi
+# --
+${1:Header}
+${1:$(make-string (string-width text) ?\=)}

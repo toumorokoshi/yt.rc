@@ -33,9 +33,11 @@
     js2-mode
     less-css-mode
     linum-relative
+    markdown-mode
     magit
     multiple-cursors
     powerline
+    projectile
     scala-mode2
     rainbow-mode
     visual-regexp

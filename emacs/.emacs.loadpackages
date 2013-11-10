@@ -181,3 +181,14 @@
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'web-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
 (add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+
+; projectile-mode
+; (projectile-global-mode)
+; use indexing 
+; (setq projectile-indexing-method 'native)
+; force caching
+; (setq projectile-enable-caching)
+
+; fiplr
+(require 'fiplr)
+(global-set-key (kbd "C-x C-g") 'fiplr-find-file)
