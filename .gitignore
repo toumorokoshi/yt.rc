@@ -1,2 +1,11 @@
 emacs/elpa/
 emacs/ac-comphist.dat
+emacs/auto-save-list
+emacs/ido.last
+*~
+*.swp
+*.swo
+emacs/url/cookies
+emacs/places
+
+

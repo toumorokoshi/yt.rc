@@ -1,0 +1,11 @@
+!
+!   .Xresources file
+!   Man pages: xrdb, Xsession
+!
+! --------------------------------------------
+! Note that $HOME/.Xdefaults is a relic from
+! X Version 10 (and  X11R1)  days, before
+! app-defaults  files were implemented.
+! It has been deprecated for over ten years
+! .Xresources should be used instead.
+! --------------------------------------------
