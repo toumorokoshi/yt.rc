@@ -37,6 +37,7 @@
     magit
     multiple-cursors
     powerline
+    prodigy
     projectile
     scala-mode2
     rainbow-mode

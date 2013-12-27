@@ -9,3 +9,49 @@
 ! It has been deprecated for over ten years
 ! .Xresources should be used instead.
 ! --------------------------------------------
+
+!---- Font rendering  {
+! ref: https://wiki.archlinux.org/index.php/Font_Configuration
+! ref: http://www.keithp.com/~keithp/render/Xft.tutorial
+Xft.antialias:                        1
+Xft.autohint:                         true
+Xft.hinting:                          1
+!Xft.hintstyle:                       hintfull
+Xft.hintstyle:                        hintslight
+!Xft.dpi:                              96
+Xft.rgba:                             rgb
+!Xft.embolden:                        false
+Xft.lcdfilter:                        lcddefault
+
+!---- URxvt - General settings {
+URxvt*fading:                         0
+URxvt*:borderLess:                    true
+URxvt*internalBorder:                 5
+
+URxvt*cursorBlink:                    false
+URxvt*jumpScroll:                     true
+URxvt*scrollBar:                      off
+URxvt*saveLines:                      20000
+URxvt*scrollWithBuffer:               true
+URxvt*scrollTtyOutput:                false
+URxvt*scrollTtyKeypress:              true
+URxvt*urgentOnBell:                   true
+URxvt*visualBell:                     false
+URxvt*tabbed.autohide:                false
+URxvt*tabbed.tabbar-fg:               10
+URxvt*tabbed.tabbar-bg:               0
+URxvt*tabbed.tab-fg:                  0
+URxvt*tabbed.tab-bg:                  4
+URxvt*tabbed.title-fg:                4
+URxvt*tabbed.title-bg:                0
+URxvt*tabbed.repoen-on-close:         yes
+URxvt*matcher.button:                 1
+URxvt.print-pipe:                     cat > $(echo urxvt.scrollback.$(date +'%Y-%m-%d.%H_%m_%S'))
+URxvt.keysym.C-plus:                  perl:font:increment
+URxvt.keysym.C-minus:                 perl:font:decrement
+Rxvt*keysym.M-u:                     perl:url-select:select_next
+URxvt*url-select.launcher:            www
+URxvt*url-select.underline:           true
+URxvt*clipboard.autocopy:             true
+URxvt.keysym.H-v:                     perl:clipboard:paste
+URxvt*dynamicColors:                  on

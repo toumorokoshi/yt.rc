@@ -1,7 +1,7 @@
 #include "x-common"
 
-Xmessage*background:          #fdf6e3
-Xmessage*foreground:          #657b83
+Xmessage*background:          #ffffff
+Xmessage*foreground:          #000000
 
 URxvt*colorUL:                #859900
 URxvt*colorBD:                #268bd2
@@ -14,22 +14,12 @@ URxvt*color5:                 #d33682
 URxvt*color13:                #6c71c4
 URxvt*color6:                 #2aa198
 
-URxvt*background:             #fdf6e3
-URxvt*foreground:             #657b83
-URxvt*fadeColor:              #fdf6e3
-URxvt*cursorColor:            #586e75
-URxvt*pointerColorBackground: #93a1a1
-URxvt*pointerColorForeground: #586e75
-URxvt*scrollColor:            #93a1a1
-URxvt*borderColor:            #fdf6e3
-URxvt*color0:                 #073642
-URxvt*color8:                 #657b83
-URxvt*color10:                #93a1a1
-URxvt*color11:                #839496
-URxvt*color12:                #657b83
-URxvt*color14:                #586e75
-URxvt*color7:                 #839496
-URxvt*color15:                #002b36
+URxvt*background:             #ffffff
+URxvt*foreground:             #000000
+
+! larger font size
+URxvt*font:                   xft:Monospace:size=11.8
+URxvt*boldFont:                   xft:Monospace:size=11.8
 
 
 ! Local Variables:
