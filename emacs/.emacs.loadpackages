@@ -192,3 +192,7 @@
 ; fiplr
 (require 'fiplr)
 (global-set-key (kbd "C-x C-g") 'fiplr-find-file)
+
+; load prodigy packages
+(require 'prodigy)
+(load "~/.emacs.d/.emacs.prodigy")
