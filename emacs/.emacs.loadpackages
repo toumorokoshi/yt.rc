@@ -196,3 +196,6 @@
 ; load prodigy packages
 (require 'prodigy)
 (load "~/.emacs.d/.emacs.prodigy")
+
+; load a random theme
+(load "~/.emacs.d/.emacs.prodigy")

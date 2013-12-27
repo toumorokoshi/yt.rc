@@ -7,5 +7,7 @@ emacs/ido.last
 *.swo
 emacs/url/cookies
 emacs/places
+.\#*
+\#*
 
 
