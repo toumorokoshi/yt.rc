@@ -81,6 +81,7 @@
             (list python-executable jedi:server-script))
       (jedi:stop-server)))
 (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
+(add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c j d") 'jedi:goto-definition)))
 ;; Trying to get it working with buildout/virtualenv in a nice way.
 ;; this requires:
 ;; jedi and epc installed as a system package

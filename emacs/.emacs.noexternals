@@ -142,3 +142,6 @@
 ;; (global-semantic-decoration-mode t)
 ;; (global-semantic-highlight-func-mode t)
 ;; (global-semantic-show-unmatched-syntax-mode t)
+
+;; prefer utf-8
+(prefer-coding-system 'utf-8)

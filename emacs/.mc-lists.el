@@ -8,6 +8,7 @@
         viper-backward-char
         viper-backward-word
         viper-beginning-of-line
+        viper-command-argument
         viper-del-backward-char-in-insert
         viper-delete-char
         viper-digit-argument
@@ -17,6 +18,7 @@
         viper-insert
         viper-intercept-ESC-key
         viper-previous-line
+        viper-replace-char
         viper-scroll-up-one
         ))
 
