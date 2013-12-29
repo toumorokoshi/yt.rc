@@ -1,0 +1,8 @@
+(prodigy-define-service
+  :name "tgapp.testapi"
+  :command "/home/yusuket/stash/LIBS/egg.tgapp.testapi/bin/paster"
+  :cwd "/home/yusuket/stash/LIBS/egg.tgapp.testapi"
+  :args '("serve" "testdata/app/test.ini" "--reload")
+  :tags '(zillow)
+  :kill-signal 'sigint
+  :kill-process-buffer-on-stop t)

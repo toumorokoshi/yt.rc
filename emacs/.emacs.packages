@@ -10,6 +10,7 @@
 (defvar toumorokoshi-packages
   '(
     ace-jump-mode
+    afternoon-theme
     anything-git-goto
     auto-complete
     butler
@@ -37,6 +38,7 @@
     magit
     multiple-cursors
     powerline
+    prodigy
     projectile
     scala-mode2
     rainbow-mode

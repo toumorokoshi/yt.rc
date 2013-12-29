@@ -4,6 +4,7 @@
 (setq mc/cmds-to-run-for-all
       '(
         go-mode-insert-and-indent
+        jedi:dot-complete
         viper-Append
         viper-backward-char
         viper-backward-word
@@ -20,6 +21,7 @@
         viper-previous-line
         viper-replace-char
         viper-scroll-up-one
+        yas-expand
         ))
 
 (setq mc/cmds-to-run-once
