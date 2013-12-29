@@ -1,4 +1,5 @@
 ;; this package is for various methods
+(require 'cl)
 
 ;; wraps search automatically
 (defadvice isearch-search (after isearch-no-fail activate)
@@ -63,3 +64,28 @@
   (interactive "r\nsAlign regexp: ")
   (align-regexp start end 
                 (concat "\\(\\s-*\\)" regexp) 1 1 t))
+
+
+;; adding stuff to run command after hook and to remove them
+(setq shell-buffer-hooks (make-hash-table))
+
+(defun shell-to-save-buffer-kill () 
+  (let ((hook (gethash (buffer-file-name) shell-buffer-hooks)))
+    (if hook (remove-hook 'after-save-hook hook))
+  )
+)
+
+(add-hook 'kill-buffer-hook 'shell-to-save-buffer-kill)
+
+(defun shell-to-save-buffer-hook (c)
+  "Run a command <c> every time the buffer is saved "
+  (interactive "sShell command: ")
+  (lexical-let ((current-file (buffer-file-name))
+                (user-command c))
+    (let ((hook (lambda() 
+                 (if (eq current-file (buffer-file-name))
+                     (shell-command user-command))
+                 )))
+        (puthash (buffer-file-name) hook shell-buffer-hooks)
+        (add-hook 'after-save-hook hook)
+    )))
