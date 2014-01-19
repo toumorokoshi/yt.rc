@@ -4,4 +4,6 @@
 # contributor: Yusuke Tsutsumi
 # --
 ${1:Header}
-${1:$(make-string (string-width text) ?\=)}
+${1:$(make-string (string-width (or (yas-text) "t")) ?\=)}
+
+$0

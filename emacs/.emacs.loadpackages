@@ -22,24 +22,14 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;; (let ((config (plist-get (elt el-get-sources 2) :config)))
-;;      (funcall config)
-;; )
+;; flycheck-mode
+(require 'flycheck)
+(global-flycheck-mode)
 
-;; run "after" commands
-;; (mapc (lambda (f) (
-;;       (let ((config (plist-get f :config)))
-;;         (if (not (= config nil))
-;;           config nil))))
-;; el-get-sources)
-
-;; flymake-mode
-(global-set-key (kbd "C-; C-f") 'flymake-mode)  
-(defun flymake-get-tex-args (file-name)
-  (list "chktex" (list "-q" "-v0" filename))) (load-library "flymake-cursor")
 ;; rainbow-mode
 ;; (defun all-css-modes() (css-mode) (rainbow-mode)) 
 ;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 ;; yaml-mode
@@ -52,7 +42,6 @@
 (ac-config-default)
 
 ;; yasnippet
-(when (not (require 'yasnippet nil t)) (package-install 'yasnippet))
 (require 'yasnippet)
 (yas/global-mode 1) 
 (yas/load-directory "~/.emacs.d/snippets")
@@ -127,7 +116,6 @@
 (define-key global-map (kbd "C-c m") 'magit-status)
 
 ;; go stuff
-(require 'flymake-go)
 (require 'go-autocomplete)
 
 ;; multiple cursors

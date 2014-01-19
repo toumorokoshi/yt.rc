@@ -3,6 +3,8 @@
 # key: h2
 # contributor: Yusuke Tsutsumi
 # --
-${1:$(make-string (string-width text) ?\-)}
-${1:Header 2}
-${1:$(make-string (string-width text) ?\-)}
+${1:$(make-string (string-width (or (yas-text) "t")) ?\-)}
+${1:Title}
+${1:$(make-string (string-width (or (yas-text) "t")) ?\-)}
+
+$0

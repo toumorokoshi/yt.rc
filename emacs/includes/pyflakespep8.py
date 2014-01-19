@@ -5,7 +5,8 @@ This file comes from
 http://people.cs.uct.ac.za/~ksmith/2011/better-python-flymake-integration-in-emacs.html
 """
 
-import commands
+import shlex
+import subprocess
 import re
 import sys
 
@@ -24,15 +25,19 @@ pep8_warning = make_re('.')
 
 
 def run(cmd, ignore_re, warning_re):
-    output = commands.getoutput(cmd)
+    try:
+        output = subprocess.check_output(shlex.split(cmd))
+    except subprocess.CalledProcessError:
+        output = sys.exc_info()[1].output
     for line in output.splitlines():
+        line = str(line)
         if ignore_re and ignore_re.search(line):
             continue
         elif ': ' in line and warning_re.search(line):
             line = '%s: WARNING %s' % tuple(line.split(': ', 1))
-        print line
+        print(line)
 
 run('pyflakes %s' % sys.argv[1], pyflakes_ignore, pyflakes_warning)
-print '## pyflakes above, pep8 below ##'
+print('## pyflakes above, pep8 below ##')
 pep8_ignore = ' '.join('--ignore=%s' % i for i in pep8_ignore)
 run('pep8 %s --repeat %s' % (pep8_ignore, sys.argv[1]), None, pep8_warning)

@@ -17,11 +17,11 @@
     color-theme
     emmet-mode
     dired+
+    fiplr
     flx
     flx-ido
-    flymake
+    flycheck
     flymake-cursor
-    flymake-go
     go-autocomplete
     go-mode
     go-snippets
@@ -47,5 +47,3 @@
     yaml-mode
     yasnippet
    ) "A list of packages to ensure are installed at launch.")
-
-(provide 'toumorokoshi-packages)
