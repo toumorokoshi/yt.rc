@@ -43,8 +43,10 @@
 
 ;; yasnippet
 (require 'yasnippet)
-(yas/global-mode 1) 
-(yas/load-directory "~/.emacs.d/snippets")
+(yas-global-mode 1) 
+(yas-load-directory "~/.emacs.d/snippets")
+(add-hook 'term-mode-hook (lambda()
+        (setq yas-dont-activate t)))
 ;; add snippets to autocomplete.el
 (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
@@ -184,7 +186,4 @@
 
 ; load prodigy packages
 (require 'prodigy)
-(load "~/.emacs.d/.emacs.prodigy")
-
-; load a random theme
 (load "~/.emacs.d/.emacs.prodigy")
