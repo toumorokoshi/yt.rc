@@ -10,3 +10,8 @@ emacs/places
 .\#*
 \#*
 distribute*tar.gz
+xmonad/*.hi
+xmonad/*.s
+xmonad/*.o
+xmonad/*.errors
+xmonad/xmonad-*-linux
