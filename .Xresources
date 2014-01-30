@@ -43,6 +43,5 @@ URxvt.matcher.button:   1
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,clipboard
 
-URxvt.keysym.C-Insert:   perl:clipboard:copy
+URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.clipboard.autocopy:   true
- 
