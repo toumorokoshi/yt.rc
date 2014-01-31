@@ -71,5 +71,9 @@ function parse_git_repo {
     fi    
 }
 
+# need bash completion
+GIT_PROMPT_PATH=/usr/share/git/completion/git-prompt.sh
+[[ -f $GIT_PROMPT_PATH ]] && source $GIT_PROMPT_PATH
+
 
 export PS1="$IYELLOW\u:\w\\[\033[\$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
