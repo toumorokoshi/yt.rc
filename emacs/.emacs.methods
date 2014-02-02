@@ -6,7 +6,7 @@
   (unless isearch-success
     (ad-disable-advice 'isearch-search 'after 'isearch-no-fail)
     (ad-activate 'isearch-search)
-    (isearch-repeat (if isearch-forward 'forward))
+    (isearch-repeat (when isearch-forward 'forward))
     (ad-enable-advice 'isearch-search 'after 'isearch-no-fail)
     (ad-activate 'isearch-search)))
 
@@ -77,7 +77,7 @@
 (defun command-buffer-run-hook ()
   "Run a command if it exists in the hook"
   (let ((hook (gethash (buffer-file-name) command-buffer-hooks)))
-    (if (not (eq hook nil))
+    (when (not (eq hook nil))
         (shell-command hook)
     )
   )

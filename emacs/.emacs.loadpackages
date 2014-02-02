@@ -4,24 +4,6 @@
 ;; loading package list from another directory
 (load "~/.emacs.d/.emacs.packages")
 
-;; http://stackoverflow.com/questions/10092322/how-to-automatically-install-emacs-packages-by-specifying-a-list-of-package-name
-(setq url-http-attempt-keepalives nil)
-
-(defun packages-installed-p ()
-  (loop for p in toumorokoshi-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
-
-(unless (packages-installed-p)
-  ;; check for new packages (package versions)
-  (message "%s" "Emacs is now refreshing its package database...")
-  (package-refresh-contents)
-  (message "%s" " done.")
-  ;; install the missing packages
-  (dolist (p toumorokoshi-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
 ;; flycheck-mode
 (require 'flycheck)
 (global-flycheck-mode)
@@ -56,15 +38,12 @@
 
 ;; Mark-multiple
 
-;; anything-git-goto
-(require 'anything-git-goto)
-(global-set-key (kbd "C-x C-g") 'anything-git-goto)
-
 ;; Trying out jedi
 ;; In order for jedi to work, we need:
 ;; virtual env installed
-(load-library "jedi")
 (setq jedi:complete-on-dot t)
+(setq jedi:setup-keys t)
+(load-library "jedi")
 (defun jedi-choose-executable ()
   (interactive)
   (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
@@ -154,7 +133,7 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
-(setq web-mode-engine-alist
+(setq web-mode-engine-alist   
       '(("django" . "\\.html\\'")))
 
 ;; p4-mode, for when it exists

@@ -2,6 +2,10 @@ emacs/elpa/
 emacs/ac-comphist.dat
 emacs/auto-save-list
 emacs/ido.last
+emacs/eshell/
+emacs/semanticdb
+emacs/ede-projects.el
+
 *~
 *.swp
 *.swo

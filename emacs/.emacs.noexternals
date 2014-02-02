@@ -1,11 +1,5 @@
 ;; Load packages for emacs 24. Keep package-based stuff separate in loadpackages
 ;; someday I may want a "bare" emacs file
-;;(load "~/.emacs.loadpackages")
-;;(add-hook 'after-init-hook '(lambda ()
-;;  (load "~/.emacs.loadpackages")
-;;  (load "~/.emacs.methods") 
-;;  (load "~/.emacs.elget") 
-;;  (ad-activate 'isearch-search)))
 
 ;; C-c <key> is reserved for the user?
 ;; http://www.reddit.com/r/emacs/comments/1kzv76/looking_for_free_keys_to_occupy/
@@ -135,13 +129,6 @@
 
 ;; add whack whitespace
 (global-set-key "\C-l" 'whack-whitespace)
-
-;; cedet
-;; (require 'cedet)
-;; (global-semantic-idle-completions-mode t)
-;; (global-semantic-decoration-mode t)
-;; (global-semantic-highlight-func-mode t)
-;; (global-semantic-show-unmatched-syntax-mode t)
 
 ;; prefer utf-8
 (prefer-coding-system 'utf-8)
