@@ -1,12 +1,12 @@
 ;; Gotta look good
 ;; also have to load before viper mode, it changes the cursor color if not
 (setq debug-on-error t)
-(load "~/.emacs.d/.emacs.methods")
+(load "~/.emacs.d/my-methods.el")
 (add-hook 'after-init-hook '(lambda ()
-  (load "~/.emacs.d/.emacs.loadpackages")
-  (load "~/.emacs.d/.emacs.style")
-  (load "~/.emacs.d/.emacs.noexternals")
-  (load "~/.emacs.d/.emacs.themes")
+  (load "~/.emacs.d/my-loadpackages.el")
+  (load "~/.emacs.d/my-style.el")
+  (load "~/.emacs.d/my-noexternals.el")
+  (load "~/.emacs.d/my-themes.el")
   (random-theme)
   (ad-activate 'isearch-search)))
 (put 'set-goal-column 'disabled nil)

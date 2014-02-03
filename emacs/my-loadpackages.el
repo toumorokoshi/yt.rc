@@ -2,7 +2,7 @@
 (require 'cl)
 
 ;; loading package list from another directory
-(load "~/.emacs.d/.emacs.packages")
+(load "~/.emacs.d/my-packages.el")
 
 ;; flycheck-mode
 (require 'flycheck)
@@ -165,4 +165,4 @@
 
 ; load prodigy packages
 (require 'prodigy)
-(load "~/.emacs.d/.emacs.prodigy")
+(load "~/.emacs.d/my-prodigy.el")
