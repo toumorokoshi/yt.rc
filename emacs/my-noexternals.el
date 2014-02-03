@@ -128,7 +128,7 @@
 (set-default 'truncate-lines t)
 
 ;; add whack whitespace
-(global-set-key "\C-l" 'whack-whitespace)
+(global-set-key "\C-l" 'my-whack-whitespace)
 
 ;; prefer utf-8
 (prefer-coding-system 'utf-8)

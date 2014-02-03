@@ -19,3 +19,4 @@ xmonad/*.s
 xmonad/*.o
 xmonad/*.errors
 xmonad/xmonad-*-linux
+flycheck*
