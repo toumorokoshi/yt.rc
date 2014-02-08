@@ -16,6 +16,7 @@
     butler
     color-theme
     emmet-mode
+    evil
     dired+
     fiplr
     flx

@@ -19,9 +19,9 @@
 (setq inhibit-startup-message t)
 
 ;; code to instantiate viper
-(setq viper-mode t)
-(require 'viper)
-(global-unset-key (kbd "C-z")) 
+; (setq viper-mode t)
+; (require 'viper)
+; (global-unset-key (kbd "C-z")) 
 
 ;; uniquify (prefix names)
 (require 'uniquify)

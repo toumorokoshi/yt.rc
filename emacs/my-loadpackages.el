@@ -166,3 +166,9 @@
 ; load prodigy packages
 (require 'prodigy)
 (load "~/.emacs.d/my-prodigy.el")
+
+; evil?
+(require 'evil)
+(evil-mode 1)
+; evil needs it's own file, for sure.
+(load "~/.emacs.d/my-evil.el")
