@@ -3,8 +3,11 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        evil-change
+        evil-delete
         go-mode-insert-and-indent
         jedi:dot-complete
+        tab-to-tab-stop
         viper-Append
         viper-backward-char
         viper-backward-word
