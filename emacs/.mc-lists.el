@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        evil-insert
         go-mode-insert-and-indent
         jedi:dot-complete
         viper-Append
