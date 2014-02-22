@@ -1,0 +1,7 @@
+[user]
+	name = Yusuke Tsutsumi
+	email = tsutsumi.yusuke@gmail.com
+[alias]
+	c = checkout
+	s = status
+	cam = commit -m \"\" -a
