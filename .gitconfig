@@ -4,4 +4,4 @@
 [alias]
 	c = checkout
 	s = status
-	cam = commit -m \"\" -a
+	cam = commit -am
