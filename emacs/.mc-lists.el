@@ -3,6 +3,7 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        evil-insert
         evil-change
         evil-delete
         go-mode-insert-and-indent
