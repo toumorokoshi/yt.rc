@@ -24,7 +24,7 @@
 ;; code to instantiate viper
 ; (setq viper-mode t)
 ; (require 'viper)
-; (global-unset-key (kbd "C-z")) 
+; (global-unset-key (kbd "C-z"))
 
 ;; uniquify (prefix names)
 (require 'uniquify)
@@ -65,7 +65,7 @@
 ;; Initiate viper mode
 (global-set-key (kbd "C-c C-v") 'viper-mode)
 
-;; Wind-move 
+;; Wind-move
 (global-set-key (kbd "C-x C-l") 'windmove-right)
 (global-set-key (kbd "C-x C-h") 'windmove-left)
 (global-set-key (kbd "C-x C-k") 'windmove-up)
@@ -76,7 +76,7 @@
 (setq-default tab-width 2)
 
 ;; Python-mode
-(add-hook 'python-mode-hook '(lambda () 
+(add-hook 'python-mode-hook '(lambda ()
  (setq python-indent 4)))
 
 ;; Hippie-expand (haven't really used it yet)
@@ -135,3 +135,35 @@
 
 ;; prefer utf-8
 (prefer-coding-system 'utf-8)
+
+;; activate winner-mode
+;; http://www.emacswiki.org/emacs/WinnerMode
+(winner-mode 1)
+
+;; save the last place I visited in the buffer
+(require 'saveplace)
+(setq-default save-place t)
+
+
+;; cleanup whitespace on save (whitespace.el)
+;; this removes trailing whitespace on lines,
+;; leading and trailing newlines
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; adding 'indentation' replaces all tabs with spaces. We don't necessarily want that.
+(setq whitespace-style
+'(
+  face
+  tabs
+  spaces
+  trailing
+  lines
+  space-before-tab
+  newline
+  empty
+  space-after-tab
+  space-mark
+  tab-mark
+  newline-mark
+ )
+)

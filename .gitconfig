@@ -4,7 +4,7 @@
 [alias]
 	c = checkout
 	s = status
-	cam = commit -am
+	cam = commit -am \"\"
 	st = stash
 	l = log --stat --graph --all
 	sta = stash apply

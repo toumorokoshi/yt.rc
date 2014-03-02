@@ -3,7 +3,7 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
@@ -16,6 +16,8 @@
     butler
     color-theme
     emmet-mode
+    elpy
+    erlang
     evil
     dired+
     fiplr
@@ -31,7 +33,6 @@
     helm
     highlight-indentation
     ido-vertical-mode
-    jedi
     js2-mode
     less-css-mode
     linum-relative

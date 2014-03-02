@@ -9,13 +9,13 @@
 (global-flycheck-mode)
 
 ;; rainbow-mode
-;; (defun all-css-modes() (css-mode) (rainbow-mode)) 
-;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes)) 
+;; (defun all-css-modes() (css-mode) (rainbow-mode))
+;; (add-to-list 'auto-mode-alist '("\\.css$" . all-css-modes))
 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
 ;; yaml-mode
-(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode)) 
+(add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 ;; autocomplete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
@@ -25,7 +25,7 @@
 
 ;; yasnippet
 (require 'yasnippet)
-(yas-global-mode 1) 
+(yas-global-mode 1)
 (yas-load-directory "~/.emacs.d/snippets")
 (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))
@@ -37,25 +37,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;; Mark-multiple
-
-;; Trying out jedi
-;; In order for jedi to work, we need:
-;; virtual env installed
-(setq jedi:complete-on-dot t)
-(setq jedi:setup-keys t)
-(load-library "jedi")
-(defun jedi-choose-executable ()
-  (interactive)
-  (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
-      (setq jedi:server-command
-            (list python-executable jedi:server-script))
-      (jedi:stop-server)))
-(add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
-(add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c j d") 'jedi:goto-definition)))
-;; Trying to get it working with buildout/virtualenv in a nice way.
-;; this requires:
-;; jedi and epc installed as a system package
-(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; Changes Auctex to PDF mode by default
 (setq TeX-PDF-mode t)
@@ -133,7 +114,7 @@
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
-(setq web-mode-engine-alist   
+(setq web-mode-engine-alist
       '(("django" . "\\.html\\'")))
 
 ;; p4-mode, for when it exists
@@ -154,7 +135,7 @@
 
 ; projectile-mode
 ; (projectile-global-mode)
-; use indexing 
+; use indexing
 ; (setq projectile-indexing-method 'native)
 ; force caching
 ; (setq projectile-enable-caching)
@@ -172,3 +153,24 @@
 (evil-mode 1)
 ; evil needs it's own file, for sure.
 (load "~/.emacs.d/my-evil.el")
+
+;; ;; Trying out jedi
+;; ;; In order for jedi to work, we need:
+;; ;; virtual env installed
+;; (setq jedi:complete-on-dot t)
+;; (setq jedi:setup-keys t)
+;; (load-library "jedi")
+;; (defun jedi-choose-executable ()
+;;   (interactive)
+;;   (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
+;;       (setq jedi:server-command
+;;             (list python-executable jedi:server-script))
+;;       (jedi:stop-server)))
+;; (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
+;; (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c j d") 'jedi:goto-definition)))
+;; ;; Trying to get it working with buildout/virtualenv in a nice way.
+;; ;; this requires:
+;; ;; jedi and epc installed as a system package
+;; (add-hook 'python-mode-hook 'jedi:setup)
+
+(elpy-enable)
