@@ -14,3 +14,11 @@
   :tags '(zillow statics)
   :kill-signal 'sigint
   :kill-process-buffer-on-stop t)
+(prodigy-define-service
+  :name "zon"
+  :command "/home/yusuket/stash/SERVICES/tg.zon/bin/paster"
+  :cwd "/home/yusuket/stash/SERVICES/tg.zon"
+  :args '("serve" "config/current/zon.ini" "--reload")
+  :tags '(zillow)
+  :kill-signal 'sigint
+  :kill-process-buffer-on-stop t)

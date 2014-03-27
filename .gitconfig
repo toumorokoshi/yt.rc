@@ -12,3 +12,4 @@
   aliases = "!git config -l | grep alias | cut -c 7-"
   r = reset
   rh = reset --hard
+	cam = commit -a -m \"\"
