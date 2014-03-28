@@ -3,9 +3,10 @@
 
 (setq mc/cmds-to-run-for-all
       '(
-        evil-insert
         evil-change
         evil-delete
+        evil-insert
+        evil-normal-state
         go-mode-insert-and-indent
         jedi:dot-complete
         tab-to-tab-stop

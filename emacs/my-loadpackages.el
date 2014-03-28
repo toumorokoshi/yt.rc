@@ -154,23 +154,10 @@
 ; evil needs it's own file, for sure.
 (load "~/.emacs.d/my-evil.el")
 
-;; ;; Trying out jedi
-;; ;; In order for jedi to work, we need:
-;; ;; virtual env installed
-;; (setq jedi:complete-on-dot t)
-;; (setq jedi:setup-keys t)
-;; (load-library "jedi")
-;; (defun jedi-choose-executable ()
-;;   (interactive)
-;;   (let ((python-executable (read-file-name "Path to python executable? " (buffer-file-name))))
-;;       (setq jedi:server-command
-;;             (list python-executable jedi:server-script))
-;;       (jedi:stop-server)))
-;; (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c C-p") 'jedi-choose-executable)))
-;; (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "C-c j d") 'jedi:goto-definition)))
-;; ;; Trying to get it working with buildout/virtualenv in a nice way.
-;; ;; this requires:
-;; ;; jedi and epc installed as a system package
-;; (add-hook 'python-mode-hook 'jedi:setup)
 
+; elpy
 (elpy-enable)
+
+; haskell-mode
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
