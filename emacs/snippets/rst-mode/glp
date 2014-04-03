@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+# name: glp
+# key: glp
+# contributor: Yusuke Tsutsumi
+# --
+${1:$(make-string (+ 4 (string-width (or (yas-text) "t")) ?\=))}
+GLP-${1:Title}
+${1:$(make-string (+ 4 (string-width (or (yas-text) "t")) ?\=))}
+:author: Yusuke Tsutsumi
+:created_date: 2014-03-30
+:updated_date: 2014-03-30
+
+$0
+
+-----------------------
+Proposed Implementation
+-----------------------
+
+---------------------------------
+Implementation in other languages
+---------------------------------
+
+------------------
+Further Discussion
+------------------
