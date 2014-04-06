@@ -167,3 +167,6 @@
   newline-mark
  )
 )
+
+;; making indent-region a common thing
+(global-set-key (kbd "C-c i") 'indent-region)
