@@ -78,6 +78,7 @@
 (define-key global-map (kbd "C-c g s") 'magit-status)
 (define-key global-map (kbd "C-c g p") 'magit-pull)
 (define-key global-map (kbd "C-c g b") 'magit-blame-mode)
+(define-key global-map (kbd "C-c g l") 'magit-log)
 
 ;; go stuff
 (require 'go-autocomplete)
