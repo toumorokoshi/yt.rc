@@ -49,16 +49,16 @@ function parse_git_dirty_color {
 #used in the prompt command below to display what git branch i'm in.
 function has_git_branch {
     local branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'`
-    if [ "x$branch" = "x" ]; then 
+    if [ "x$branch" = "x" ]; then
         return 0
     else
         return 1
     fi
 }
 
-# Echos the repo that you are in. 
+# Echos the repo that you are in.
 # Might not work if you don't have a tracking branch
-function parse_git_repo {    
+function parse_git_repo {
     has_git_branch
     if [ $? -eq 1 ]; then
         local repo=$(git remote -v  2> /dev/null|head -n 1)
@@ -68,12 +68,15 @@ function parse_git_repo {
         then
             echo " ($repo_name)"
         fi
-    fi    
+    fi
 }
 
 # need bash completion
 GIT_PROMPT_PATH=/usr/share/git/completion/git-prompt.sh
 [[ -f $GIT_PROMPT_PATH ]] && source $GIT_PROMPT_PATH
 
+# On OSX, we need to source git completion directly
+OSX_GIT_PATH=/usr/local/Cellar/git/1.9.1/etc/bash_completion.d/git-prompt.sh
+[[ -f $OSX_GIT_PATH ]] && source $OSX_GIT_PATH
 
 export PS1="$IYELLOW\u:\w\\[\033[\$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
