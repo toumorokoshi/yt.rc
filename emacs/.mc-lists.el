@@ -3,6 +3,9 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        c-electric-paren
+        c-electric-semi&comma
+        evil-append-line
         evil-change
         evil-delete
         evil-insert

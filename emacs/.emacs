@@ -18,7 +18,9 @@
  '(custom-safe-themes
    (quote
     ("e49b9cfa39ce92b424a30cbd74386a5fcb854195cf1a8e18536388cbc2179bf6" "ded04bcde871f28b0dac99251af8b7515f99e313db4abe76cac5536d0d11f70e" "f0ea6118d1414b24c2e4babdc8e252707727e7b4ff2e791129f240a2b3093e32" default)))
- '(flycheck-flake8-maximum-line-length 1000))
+ '(flycheck-flake8-maximum-line-length 1000)
+ '(flycheck-clang-language-standard "c++11"))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

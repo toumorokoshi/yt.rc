@@ -24,7 +24,7 @@
     (when (string-integer-p x)
       (let ((x-int (string-to-number x))
             (bds (bounds-of-thing-at-point 'symbol)))
-        (progn 
+        (progn
           (delete-region (car bds) (cdr bds))
           (insert (number-to-string (- x-int 1)))
         )
@@ -41,7 +41,7 @@
     (when (string-integer-p x)
       (let ((x-int (string-to-number x))
             (bds (bounds-of-thing-at-point 'symbol)))
-        (progn 
+        (progn
           (delete-region (car bds) (cdr bds))
           (insert (number-to-string (+ x-int 1)))
         )
@@ -59,17 +59,17 @@
     (replace-match "" nil nil)))
 
 (defun my-align-repeat (start end regexp)
-  "Repeat alignment with respect to 
+  "Repeat alignment with respect to
      the given regular expression."
   (interactive "r\nsAlign regexp: ")
-  (align-regexp start end 
+  (align-regexp start end
                 (concat "\\(\\s-*\\)" regexp) 1 1 t))
 
 
 ;; adding stuff to run command after hook and to remove them
 (setq my-command-buffer-hooks (make-hash-table))
 
-(defun my-command-buffer-kill-hook () 
+(defun my-command-buffer-kill-hook ()
   "Remove a key from <command-buffer-hooks> if it exists"
   (remhash (buffer-file-name) my-command-buffer-hooks)
 )

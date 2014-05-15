@@ -170,3 +170,10 @@
 
 ;; making indent-region a common thing
 (global-set-key (kbd "C-c i") 'indent-region)
+
+;; connect to znc
+(defun my-znc ()
+  "connect to my znc server"
+  (interactive)
+  (erc :server "tsutsumi.cloudapp.net" :port 48787 :nick "toumorokoshi")
+)
