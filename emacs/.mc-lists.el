@@ -7,7 +7,9 @@
         c-electric-semi&comma
         evil-append-line
         evil-change
+        evil-copy-from-below
         evil-delete
+        evil-delete-backward-char-and-join
         evil-insert
         evil-normal-state
         go-mode-insert-and-indent
