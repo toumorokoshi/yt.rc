@@ -10,6 +10,9 @@
         evil-copy-from-below
         evil-delete
         evil-delete-backward-char-and-join
+        evil-backward-char
+        evil-force-normal-state
+        evil-forward-char
         evil-insert
         evil-normal-state
         go-mode-insert-and-indent

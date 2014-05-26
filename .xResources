@@ -37,4 +37,14 @@ URxvt*boldFont: xft:Monospace:bold:pixelsize=12
 !enabling clickable links:
 
 URxvt.urlLauncher:      google-chrome-stable
-URxvt.matcher.button:   1 
+
+!keymaps 
+URxvt.perl-lib: ~/.urxvt/perl/
+URxvt.perl-ext-common: default,clipboard
+URxvt.iso14755: False
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.clipboard.autocopy: False
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
