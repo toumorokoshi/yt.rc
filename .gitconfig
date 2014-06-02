@@ -13,3 +13,5 @@
   r = reset
   rh = reset --hard
 	cam = commit -am \"\"
+[branch]
+	autosetuprebase = remote

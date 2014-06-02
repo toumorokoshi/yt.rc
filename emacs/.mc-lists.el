@@ -10,8 +10,11 @@
         evil-copy-from-below
         evil-delete
         evil-delete-backward-char-and-join
+        evil-delete-char
+        evil-force-normal-state
         evil-insert
         evil-normal-state
+        evil-previous-line
         go-mode-insert-and-indent
         jedi:dot-complete
         tab-to-tab-stop

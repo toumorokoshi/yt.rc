@@ -1,3 +1,4 @@
+; ~/.emacs.d/my-loadpackages.el
 ;; this package is for various methods
 (require 'cl)
 
@@ -77,7 +78,7 @@
 (defun my-command-buffer-run-hook ()
   "Run a command if it exists in the hook"
   (let ((hook (gethash (buffer-file-name) my-command-buffer-hooks)))
-    (when (not (eq hook nil))
+    (when hook
         (shell-command hook)
     )
   )
