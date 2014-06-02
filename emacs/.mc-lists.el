@@ -12,6 +12,9 @@
         evil-delete-backward-char-and-join
         evil-delete-char
         evil-force-normal-state
+        evil-backward-char
+        evil-force-normal-state
+        evil-forward-char
         evil-insert
         evil-normal-state
         evil-previous-line
