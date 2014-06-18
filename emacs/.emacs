@@ -10,6 +10,7 @@
   (random-theme)
   (ad-activate 'isearch-search)))
 (put 'set-goal-column 'disabled nil)
+(set-face-attribute 'default nil :font "Droid Sans Mono-10")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

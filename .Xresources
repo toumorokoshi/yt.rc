@@ -1,6 +1,9 @@
 URxvt.depth: 32
 URxvt.scrollBar: false
-URxvt*background: #2B2B2B
+!URxvt*background: #2B2B2B
+URxvt*background: [10]#2B2B2B
+URxvt*transparent: true
+URxvt*shading: 30
 URxvt*foreground: #DEDEDE
 URxvt*colorUL: #86a2b0
 
@@ -29,16 +32,22 @@ URxvt*colorUL: #86a2b0
 *color7  : #D3D7CF
 *color15 : #EEEEEC
 
-!urxvt fonts: 
+!urxvt fonts:
 
-URxvt*font: xft:Monospace:pixelsize=12
-URxvt*boldFont: xft:Monospace:bold:pixelsize=12
+!URxvt*font: xft:Monospace:pixelsize=12
+!URxvt*boldFont: xft:Monospace:bold:pixelsize=12
+URxvt*font:xft:droid sans mono:pixelsize=11,style=regular
+URxvt*boldFont:xft:droid sans mono:pixelsize=11,style=regular
+
+!dzen
+dzen2*font:xft:droid sans mono:pixelsize=13,style=regular
+dzen2*background: black
 
 !enabling clickable links:
 
 URxvt.urlLauncher:      google-chrome-stable
 
-!keymaps 
+!keymaps
 URxvt.perl-lib: ~/.urxvt/perl/
 URxvt.perl-ext-common: default,clipboard
 URxvt.iso14755: False

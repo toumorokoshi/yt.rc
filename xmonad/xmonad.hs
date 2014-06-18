@@ -3,13 +3,17 @@ import XMonad.Layout.Spacing
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.SetWMName
 import XMonad.Util.CustomKeys
+import XMonad.Util.Run
 import qualified Data.Map as M
 
 -- automatically move apps to a specific page
-myManageHook = composeAll 
+myManageHook = composeAll
     [ className =? "emacs" --> doShift "1:code"
     , className =? "google-chrome" --> doShift "1:chrome"
     ]
+
+-- status bar (uses dzen2 + conky)
+myStatusBar = "conky -c $HOME/.xmonad/conky_dzen | dzen2 -w '920' -x '1000' -ta 'r'"
 
 
 -- workspaces
@@ -32,14 +36,16 @@ delkeys XConfig {modMask = modm} = []
 
 inskeys :: XConfig l -> [((KeyMask, KeySym), X ())]
 inskeys conf@(XConfig {modMask = modm}) =
-        --take a screenshot of entire display 
+        --take a screenshot of entire display
         [ ((modm, xK_Print ), spawn "scrot screen_%Y-%m-%d-%H-%M-%S.png")
 
-           --take a screenshot of focused window 
+           --take a screenshot of focused window
         , ((modm .|. controlMask, xK_Print ), spawn "scrot window_%Y-%m-%d-%H-%M-%S.png -u")]
 
-main = xmonad =<< xmobar defaultConfig {
-    modMask = mod4Mask
+main = do
+     statusBar <- spawnPipe myStatusBar
+     xmonad =<< xmobar defaultConfig {
+     modMask = mod4Mask
     , terminal = "urxvt"
     , borderWidth = 2
     , workspaces = myWorkspaces
