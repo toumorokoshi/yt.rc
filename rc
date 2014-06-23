@@ -80,3 +80,16 @@ OSX_GIT_PATH=/usr/local/Cellar/git/1.9.1/etc/bash_completion.d/git-prompt.sh
 [[ -f $OSX_GIT_PATH ]] && source $OSX_GIT_PATH
 
 export PS1="$IYELLOW\u:\w\\[\033[\$(parse_git_dirty_color)\]\$(parse_git_repo)\$(__git_ps1)\n$RESET$ "
+
+# We don't care about unused arguments
+export CPPFLAGS=-Qunused-arguments
+export CFLAGS=-Qunused-arguments
+
+# We share a command history throughout all prompts
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=100000                   # big big history
+export HISTFILESIZE=100000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save and reload the history after each command finishes
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
