@@ -177,3 +177,6 @@
   (interactive)
   (erc :server "tsutsumi.cloudapp.net" :port 48787 :nick "toumorokoshi")
 )
+
+;; set up keybindings that will set major modes
+(global-set-key (kbd "C-c m p") 'python-mode)
