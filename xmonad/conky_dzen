@@ -4,12 +4,18 @@ update_interval 1
 
 lua_load $HOME/.xmonad/conky_scripts/conky_lua_scripts.lua
 
+# note: dropbox needed dropbox-cli on arch
 
 TEXT
   uptime: ${uptime} \
 # network i/o
-| ^fg(\#8888FF) ^i($HOME/.xmonad/icons/net_down_03.xbm) ${lua_parse format %7s ${downspeed}} / \
-  ^fg(\#AA0000) ^i($HOME/.xmonad/icons/net_up_03.xbm) ${lua_parse format %7s ${upspeed}} ^fg()\
+| ^fg(\#8888FF) ^i($HOME/.xmonad/icons/net_down_03.xbm) ${lua_parse format %7s ${downspeed}} ^fg() / \
+^fg(\#AA0000) ^i($HOME/.xmonad/icons/net_up_03.xbm) ${lua_parse format %7s ${upspeed}} ^fg()\
+# dropbox
+| ^fg(\#007ee5) ^i($HOME/.xmonad/icons/dropbox.xbm) \
+^fg(\#FFFF00) ${execi 6 $HOME/.xmonad/conky_scripts/dropbox-files} ^fg()\
+^fg(\#8888FF) ^i($HOME/.xmonad/icons/net_down_03.xbm) ${execi 6 $HOME/.xmonad/conky_scripts/dropbox-down} ^fg() / \
+^fg(\#AA0000) ^i($HOME/.xmonad/icons/net_up_03.xbm) ${execi 6 $HOME/.xmonad/conky_scripts/dropbox-up} ^fg() \
 | ^fg(\#66FF66) ^i($HOME/.xmonad/icons/cpu.xbm): ${cpu}% ^fg() \
 | ^fg(\#66FF66) ^i($HOME/.xmonad/icons/mem.xbm) ${mem} / ${memmax} \
-| ^fg() ${time %a %b %d %I:%M:%S}
+| ^fg() ${time %a %b %d %H:%M:%S}
