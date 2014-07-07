@@ -18,6 +18,10 @@
 ;; no lockfiles
 (setq create-lockfiles nil)
 
+;; backup files belongs in it's own directory
+(setq auto-save-file-name-transforms
+      `((".*", temporary-file-directory t)))
+
 ;; No splash screen
 (setq inhibit-startup-message t)
 
