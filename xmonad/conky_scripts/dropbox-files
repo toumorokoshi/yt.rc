@@ -5,13 +5,13 @@ SYNC_REGEX="([0-9,]+) files remaining"
 FILENAME_REGEX='"(.*)"'
 
 [[ $status =~ $SYNC_REGEX ]]
-download_speed="${BASH_REMATCH[1]}"
-if [[ $download_speed == "" ]]; then
+files_remaining="${BASH_REMATCH[1]}"
+if [[ $files_remaining == "" ]]; then
 
     [[ $status =~ $FILENAME_REGEX ]]
     filename="${BASH_REMATCH[1]}"
     echo $filename
 
 else
-    echo "$download_speed files"
+    echo "$files_remaining files"
 fi

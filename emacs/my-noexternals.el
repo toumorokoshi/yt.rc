@@ -182,5 +182,9 @@
   (erc :server "tsutsumi.cloudapp.net" :port 48787 :nick "toumorokoshi")
 )
 
+(defun my-font-exists-p (font)
+  "check if a font exists"
+  (if (null (x-list-fonts font)) nil t))
+
 ;; set up keybindings that will set major modes
 (global-set-key (kbd "C-c m p") 'python-mode)

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# drobox-down
+# shows you the dropbox download speed
 
 status=`dropbox status | grep Downloading`
 SYNC_REGEX="([0-9,]+) KB/sec"

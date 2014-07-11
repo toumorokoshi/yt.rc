@@ -26,6 +26,7 @@ main = do
              , logHook = myLogHook leftBar
              -- keybindings
              , keys = customKeys delkeys inskeys
+	     , focusFollowsMouse = True
   }
 
 -- status bar about the machine (uses dzen2 + conky)

@@ -4,7 +4,7 @@ status=`dropbox status | grep Uploading`
 SYNC_REGEX="([0-9,]+) KB/sec"
 
 [[ $status =~ $SYNC_REGEX ]]
-download_speed="${BASH_REMATCH[1]}"
-if [[ $download_speed != "" ]] ; then
-  echo "$download_speed KB/sec"
+upload_speed="${BASH_REMATCH[1]}"
+if [[ $upload_speed != "" ]] ; then
+  echo "$upload_speed KB/sec"
 fi
