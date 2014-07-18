@@ -11,6 +11,9 @@ fi
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
+# first we prep our devices to be ready to be utilized by the guest vm.
+$SCRIPTPATH/bind_devices
+
 # first, we disable one of the output of the screen that the graphics card will take control of.
 # The monitor switches automatically because one of the inputs turns off while the other input (with the windows vm) starts up
 echo "switching screen configuration..."
