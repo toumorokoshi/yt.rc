@@ -2,6 +2,10 @@
 ;; also have to load before viper mode, it changes the cursor color if not
 (setq debug-on-error t)
 (load "~/.emacs.d/my-methods.el")
+  (if (my-font-exists-p "M+ 2c medium")
+    (set-face-attribute 'default nil :font "M+ 2c medium-10")
+    (set-face-attribute 'default nil :font "Droid Sans Mono-10"))
+
 (add-hook 'after-init-hook '(lambda ()
   (load "~/.emacs.d/my-loadpackages.el")
   (load "~/.emacs.d/my-noexternals.el")
@@ -9,14 +13,10 @@
   (load "~/.emacs.d/my-themes.el")
   (random-theme)
 
-  (if my-font-exists-p ("M+ 2c medium")
-    (set-face-attribute 'default nil :font "M+ 2c medium-10")
-    (set-face-attribute 'default nil :font "Droid Sans Mono-10"))
-
   (ad-activate 'isearch-search)
 ))
 (put 'set-goal-column 'disabled nil)
-custom-set-variables
+(custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.

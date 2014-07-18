@@ -26,13 +26,13 @@ main = do
              , logHook = myLogHook leftBar
              -- keybindings
              , keys = customKeys delkeys inskeys
-	     , focusFollowsMouse = True
+             , focusFollowsMouse = True
   }
 
 -- status bar about the machine (uses dzen2 + conky)
-myStatusBar = "conky -c $HOME/.xmonad/conky_dzen | dzen2 -w '940' -x '2900' -ta 'r'"
+myStatusBar = "conky -c $HOME/.xmonad/conky_dzen | dzen2 -w '920' -x '1000' -ta 'r'"
 -- status bar about xmonad
-myXmonadBar = "dzen2 -x '1920' -ta 'l'"
+myXmonadBar = "dzen2 -w '1000' -ta 'l'"
 
 -- automatically move apps to a specific page
 myManageHook = composeAll

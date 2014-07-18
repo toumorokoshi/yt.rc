@@ -94,3 +94,7 @@
   (interactive "sShell command: ")
   (puthash (buffer-file-name) c my-command-buffer-hooks)
 )
+
+(defun my-font-exists-p (font)
+  "return true if the font exists"
+  (if (null (x-list-fonts font)) nil t))

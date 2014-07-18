@@ -1,0 +1,35 @@
+#!/usr/bin/env
+# this script starts and stops a windows vm. It makes lots of
+# assumptions about the setup of your machine. I just keep it here because
+# I don't want to lose it :)
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root!" 1>&2
+   exit 1
+fi
+
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
+
+# first, we disable one of the output of the screen that the graphics card will take control of.
+# The monitor switches automatically because one of the inputs turns off while the other input (with the windows vm) starts up
+echo "switching screen configuration..."
+xrandr --output DVI-I-2 --auto --output DVI-I-3 --off
+
+# if synergy isn't running, we start in now.
+# synergy is how we communicate to the windows vm
+# note the host os has the synergy server: windows just runs the client
+if ! ps -C synergys &> /dev/null
+then
+        echo "starting synergy..."
+         synergys > /dev/null
+fi
+
+# next, we actually start the vm. this requires qemu, kvm, and a host of other kernel modules an pci passthroughs to work.
+# this block until the vm is done.
+echo "starting windows vm..."
+$SCRIPTPATH/start_vm
+
+# finally, we restore our screen
+echo "back to normal configuration..."
+xrandr --output DVI-I-2 --auto --output DVI-I-3 --auto --right-of DVI-I-2

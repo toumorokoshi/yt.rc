@@ -7,6 +7,7 @@
 ;; flycheck-mode
 (require 'flycheck)
 (global-flycheck-mode)
+(load "~/.emacs.d/my-flycheck.el")
 
 ;; rainbow-mode
 ;; (defun all-css-modes() (css-mode) (rainbow-mode))
