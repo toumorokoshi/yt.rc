@@ -15,3 +15,5 @@
   cam = commit -am \"\"
 [branch]
 	autosetuprebase = remote
+[http]
+	sslVerify = false

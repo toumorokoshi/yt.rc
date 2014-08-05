@@ -18,4 +18,4 @@ TEXT
 ^fg(\#AA0000) ^i($HOME/.xmonad/icons/net_up_03.xbm) ${execi 6 $HOME/.xmonad/conky_scripts/dropbox-up} ^fg() \
 | ^fg(\#66FF66) ^i($HOME/.xmonad/icons/cpu.xbm): ${cpu}% ^fg() \
 | ^fg(\#66FF66) ^i($HOME/.xmonad/icons/mem.xbm) ${mem} / ${memmax} \
-| ^fg() ${time %a %b %d %H:%M:%S}
+| ^fg() ${time %F (%a) %H:%M:%S}

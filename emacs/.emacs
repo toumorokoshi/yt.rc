@@ -2,9 +2,6 @@
 ;; also have to load before viper mode, it changes the cursor color if not
 (setq debug-on-error t)
 (load "~/.emacs.d/my-methods.el")
-  (if (my-font-exists-p "M+ 2c medium")
-    (set-face-attribute 'default nil :font "M+ 2c medium-10")
-    (set-face-attribute 'default nil :font "Droid Sans Mono-10"))
 
 (add-hook 'after-init-hook '(lambda ()
   (load "~/.emacs.d/my-loadpackages.el")
@@ -12,6 +9,11 @@
   (load "~/.emacs.d/my-style.el")
   (load "~/.emacs.d/my-themes.el")
   (random-theme)
+  (if (my-font-exists-p "Source Code Pro")
+      (set-face-attribute 'default nil :font "Source Code Pro-9")
+      (set-face-attribute 'default nil :font "Droid Sans Mono-9"))
+
+
 
   (ad-activate 'isearch-search)
 ))

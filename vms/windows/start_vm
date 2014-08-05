@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 # We configure QEMU to use pulseaudio as the audio driver
-export QEMU_PA_SAMPLES=128
+export QEMU_PA_SAMPLES=2048
 export QEMU_AUDIO_DRV=pa
+export PULSE_SERVER=127.0.0.1
+export QEMU_PA_SERVER=127.0.0.1
 
 # just the recommended chipset
 CHIPSET='-M q35'
@@ -11,6 +13,7 @@ CHIPSET='-M q35'
 BIOS='-bios /usr/share/qemu/bios.bin'
 
 # no particular reasons for these values. More juice the better for gaming
+# CPU='-cpu host,hv_relaxed,hv_vapic,hv_time,hv_spinlocks=0x1000 -smp 6,sockets=1,cores=6,threads=1'
 CPU='-cpu host -smp 6,sockets=1,cores=6,threads=1'
 
 # no particular reason for these values. Giving it half the ram
@@ -24,15 +27,35 @@ HD='-device piix4-ide,bus=pcie.0,id=piix4-ide -drive file=/dev/sdb,id=disk,forma
 # also disabling the built-in vga, which will ensure routing of graphics to the GPUs.
 GPU='
         -device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1
-        -device vfio-pci,host=03:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on,romfile=/home/tsutsumi/vms/windows/gpu_bios.dump
+        -device vfio-pci,host=03:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on,romfile=/home/tsutsumi/vms/windows/gtx560.rom
         -device vfio-pci,host=03:00.1,bus=root.1,addr=00.1
         -vga none
 '
 
-qemu-system-x86_64 -enable-kvm $CHIPSET $BIOS $CPU $MEMORY $GPU
+SOUND='
+    -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0
+    -device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0
+'
+# USB=' -usb -device usb-host,hostbus=4,hostaddr=9'
+USB=' -usb -device usb-host,vendorid=0x046d,productid=0x0a1f'
 
-#    -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0 \
-#    -device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0 \
+DEBUG_LOG='-D /tmp/qemu.log -d guest_errors,unimp'
+
+# NETWORK='-net nic -net bridge,br=windows'
+# NETWORK='-net nic,model=virtio'
+
+# add $DEBUG_LOG to get some debug info
+qemu-system-x86_64 -enable-kvm $CHIPSET $BIOS $CPU $MEMORY $HD $GPU $DEBUG_LOG $USB $SOUND
+
+# GPU='
+#         -device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1
+#         -device vfio-pci,host=03:00.0,bus=root.1,addr=00.0,multifunction=on,x-vga=on
+#         -device vfio-pci,host=03:00.1,bus=root.1,addr=00.1
+#         -vga none
+# '
+
+
+
 # -drive file=/home/tsutsumi/Downloads/en_windows_7_ultimate_with_sp1_x64_dvd_u_677332.iso,id=isocd -device ide-cd,bus=piix4-ide.0,drive=isocd
 
 #     -device piix4-ide,bus=pcie.0,id=piix4-ide \

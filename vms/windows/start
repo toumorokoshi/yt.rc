@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
 # this script starts and stops a windows vm. It makes lots of
 # assumptions about the setup of your machine. I just keep it here because
 # I don't want to lose it :)
