@@ -38,6 +38,7 @@
     magit
     multiple-cursors
     powerline
+    popwin
     prodigy
     projectile
     scala-mode2

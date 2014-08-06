@@ -43,9 +43,7 @@
 (setq TeX-PDF-mode t)
 
 ;; Bind helm-for-files to c-c c-f
-(require 'helm-files)
-(setq helm-idle-delay 0.01)
-(setq helm-input-idle-delay 0.01)
+(load "~/.emacs.d/my-helm.el")
 ;; (loop for ext in '(".elc$", ".pyc$")
 ;;  do (add-to-list 'helm-c-boring-file-regexp-list ext))
 ;; (add-to-list 'helm-c-boring-file-regexp-list "\.pyc$")
@@ -167,3 +165,12 @@
 ; haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+; popwin
+(require 'popwin)
+(popwin-mode 1)
+
+; (setq display-buffer-function 'popwin:display-buffer)
+(push '("*helm M-x*" :height 20) popwin:special-display-config)
+(push '("*helm mini*" :height 20) popwin:special-display-config)
+(push '("*Helm Find Files*" :height 20) popwin:special-display-config)

@@ -16,6 +16,7 @@
 
 
   (ad-activate 'isearch-search)
+  (message "startup time was %s seconds." (emacs-uptime "%s"))
 ))
 (put 'set-goal-column 'disabled nil)
 (custom-set-variables
