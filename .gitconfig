@@ -5,7 +5,7 @@
 	c = checkout
 	s = status
 	st = stash
-	l = log --stat --graph --all
+	l = log --stat --graph
 	sta = stash apply
   ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
   grep = grep -Ii
