@@ -42,7 +42,6 @@
 ;; Changes Auctex to PDF mode by default
 (setq TeX-PDF-mode t)
 
-;; Bind helm-for-files to c-c c-f
 (load "~/.emacs.d/my-helm.el")
 ;; (loop for ext in '(".elc$", ".pyc$")
 ;;  do (add-to-list 'helm-c-boring-file-regexp-list ext))
