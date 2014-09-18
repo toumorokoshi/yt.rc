@@ -1,5 +1,10 @@
 ;; Gotta look good
 ;; also have to load before viper mode, it changes the cursor color if not
+(if (eq system-type 'darwin)
+  (setenv "PATH"
+    (concat (getenv "PATH") ":/usr/local/bin:~/bin/")
+  )
+)
 (setq debug-on-error t)
 (load "~/.emacs.d/my-methods.el")
 
