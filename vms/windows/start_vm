@@ -32,12 +32,23 @@ GPU='
         -vga none
 '
 
+# Both of these audio configurations work right now.
+# the following did not work:
+# * ac97
+
+# SOUND='
+#   -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0
+#   -device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0
+#'
+
 SOUND='
-    -device ich9-intel-hda,bus=pcie.0,addr=1b.0,id=sound0
-    -device hda-duplex,id=sound0-codec0,bus=sound0.0,cad=0
+  -soundhw hda,ac97
 '
+
 # USB=' -usb -device usb-host,hostbus=4,hostaddr=9'
-USB=' -usb -device usb-host,vendorid=0x046d,productid=0x0a1f'
+USB=""
+# USB="$USB -usb -device usb-host,vendorid=0x046d,productid=0x0a1f"  # USB Headset
+USB="$USB -usb -device usb-host,vendorid=0x045e,productid=0x0719"  # XBox controller wireless adapter
 
 DEBUG_LOG='-D /tmp/qemu.log -d guest_errors,unimp'
 
@@ -45,7 +56,7 @@ DEBUG_LOG='-D /tmp/qemu.log -d guest_errors,unimp'
 # NETWORK='-net nic,model=virtio'
 
 # add $DEBUG_LOG to get some debug info
-qemu-system-x86_64 -enable-kvm $CHIPSET $BIOS $CPU $MEMORY $HD $GPU $DEBUG_LOG $USB $SOUND
+qemu-system-x86_64 -enable-kvm $CHIPSET $BIOS $CPU $MEMORY $HD $DEBUG_LOG $SOUND $USB $GPU
 
 # GPU='
 #         -device ioh3420,bus=pcie.0,addr=1c.0,multifunction=on,port=1,chassis=1,id=root.1

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+
+# new theory: I can actually remove the nvidia device I want from the
+# nvidia driver on runtime, and reclaim it afterward.

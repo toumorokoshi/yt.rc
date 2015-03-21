@@ -1,6 +1,0 @@
-# -*- coding: utf-8 -*-
-# name: pdb
-# key: pdb
-# contributor: Yusuke Tsutsumi
-# --
-import pdb; pdb.set_trace()$0

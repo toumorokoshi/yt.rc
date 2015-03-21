@@ -21,8 +21,10 @@
         evil-insert
         evil-normal-state
         evil-previous-line
+        forward-sentence
         go-mode-insert-and-indent
         jedi:dot-complete
+        sgml-slash
         tab-to-tab-stop
         viper-Append
         viper-backward-char

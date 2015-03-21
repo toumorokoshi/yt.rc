@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# givens info about transmission
+
+command=$1
+
+function transmission-status() {
+    sum_status=`transmission-remote -l | grep Sum`
+    case $1 in
+        up)
+            key=4
+            ;;
+        down)
+            key=5
+            ;;
+    esac
+    echo $sum_status | awk "{print \$$key}"
+}
+
+transmission-status $command

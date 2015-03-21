@@ -15,14 +15,17 @@
 
 ;; highlight-indentation
 (add-hook 'python-mode-hook 'highlight-indentation-mode)
+
 ;; yaml-mode
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
+
 ;; autocomplete
 (require 'auto-complete)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+
 ;; (setq ac-max-width 0.5)
-(require 'auto-complete-config)
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
 
 ;; yasnippet
 (require 'yasnippet)
@@ -31,7 +34,7 @@
 (add-hook 'term-mode-hook (lambda()
         (setq yas-dont-activate t)))
 ;; add snippets to autocomplete.el
-(setq ac-sources '(ac-source-semantic ac-source-yasnippet))
+;; (setq ac-sources '(ac-source-semantic ac-source-yasnippet))
 
 ;; js2-mode
 (require 'js2-mode)
@@ -80,7 +83,7 @@
 (define-key global-map (kbd "C-c g c") 'magit-checkout)
 
 ;; go stuff
-(require 'go-autocomplete)
+;; (require 'go-autocomplete)
 
 ;; multiple cursors
 (require 'multiple-cursors)
@@ -151,15 +154,17 @@
 (require 'prodigy)
 (load "~/.emacs.d/my-prodigy.el")
 
+
+
 ; evil?
 (require 'evil)
 (evil-mode 1)
 ; evil needs it's own file, for sure.
 (load "~/.emacs.d/my-evil.el")
 
+;; python-specific configs here
+(load "~/.emacs.d/my-python.el")
 
-; elpy
-(elpy-enable)
 
 ; haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)

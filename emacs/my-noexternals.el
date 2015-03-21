@@ -61,6 +61,13 @@
 (require 'ido)
 (ido-mode 'both)
 
+;; ignore uninteresting files in dired
+;; keybindings must be set after this
+(require 'dired-x)
+(setq-default dired-omit-files-p t)
+(setq dired-omit-files "~$")
+
+
 ;; Keybindings
 
 ;; Whitespace mode

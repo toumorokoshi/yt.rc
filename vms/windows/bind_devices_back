@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+modprobe vfio-pci
+
+# bind the one device we want to (0000:00:03.0)
+
+# we pass the vendor id for the NVidia card to pci-stub
+echo "0000:03:00.0" > /sys/bus/pci/devices/0000:03:00.0/driver/unbind
+echo "0000:03:00.1" > /sys/bus/pci/devices/0000:03:00.1/driver/unbind
+
+# graphics card
+echo "10de 1200" > /sys/bus/pci/drivers/pci-stub/new_id
+echo "0000:03:00.0" > /sys/bus/pci/drivers/pci-stub/bind
+
+# hdmi audio
+echo "10de 0e0c" > /sys/bus/pci/drivers/pci-stub/new_id
+echo "0000:03:00.1" > /sys/bus/pci/drivers/pci-stub/bind

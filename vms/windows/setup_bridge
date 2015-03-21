@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# this sets up the network bridge that the vm will communicate with
+systemctl stop dhcpcd.service
+ip addr del 1.2.3.4/24 dev eth0
+
+# add our bridge
+brctl addbr windows
+brctl addif windows eth0
+ip link set up dev windows
+
+# detaching
+# sudo ip link set down dev windows
+# brctl delif windows eth0

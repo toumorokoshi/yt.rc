@@ -3,6 +3,7 @@
 	email = tsutsumi.yusuke@gmail.com
 [alias]
 	c = checkout
+  ci = commit
 	s = status
 	st = stash
 	l = log --stat --graph
