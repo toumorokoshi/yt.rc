@@ -1,0 +1,59 @@
+URxvt.depth: 32
+URxvt.scrollBar: false
+!URxvt*background: #2B2B2B
+URxvt*background: [10]#2B2B2B
+URxvt*transparent: true
+URxvt*shading: 30
+URxvt*foreground: #DEDEDE
+URxvt*colorUL: #86a2b0
+
+! black
+*color0  : #2E3436
+*color8  : #555753
+! red
+*color1  : #CC0000
+*color9  : #EF2929
+! green
+*color2  : #4E9A06
+*color10 : #8AE234
+! yellow
+*color3  : #C4A000
+*color11 : #FCE94F
+! blue
+*color4  : #3465A4
+*color12 : #729FCF
+! magenta
+*color5  : #75507B
+*color13 : #AD7FA8
+! cyan
+*color6  : #06989A
+*color14 : #34E2E2
+! white
+*color7  : #D3D7CF
+*color15 : #EEEEEC
+
+!urxvt fonts:
+
+!URxvt*font: xft:Monospace:pixelsize=12
+!URxvt*boldFont: xft:Monospace:bold:pixelsize=12
+URxvt*font:xft:droid sans mono:pixelsize=11,style=regular
+URxvt*boldFont:xft:droid sans mono:pixelsize=11,style=regular
+
+!dzen
+dzen2*font:xft:droid sans mono:pixelsize=13,style=regular
+dzen2*background: black
+
+!enabling clickable links:
+
+URxvt.urlLauncher:      google-chrome-stable
+
+!keymaps
+URxvt.perl-lib: ~/.urxvt/perl/
+URxvt.perl-ext-common: default,clipboard
+URxvt.iso14755: False
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+URxvt.clipboard.autocopy: False
+URxvt.clipboard.copycmd:  xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
