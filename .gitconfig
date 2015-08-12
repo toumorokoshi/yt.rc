@@ -1,6 +1,6 @@
 [user]
 	name = Yusuke Tsutsumi
-	email = tsutsumi.yusuke@gmail.com
+	email = yusuke@tsutsumi.io
 [alias]
 	c = checkout
   ci = commit
