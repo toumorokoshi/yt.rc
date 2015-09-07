@@ -165,6 +165,8 @@
 ;; python-specific configs here
 (load "~/.emacs.d/my-python.el")
 
+;; frontend specific config here
+(load "~/.emacs.d/my-frontend.el")
 
 ; haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)

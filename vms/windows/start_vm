@@ -21,7 +21,7 @@ MEMORY='-m 16384'
 
 # directly using a physical hard drive
 # note i'm adding a bus here too, to attach the HD to.
-HD='-device piix4-ide,bus=pcie.0,id=piix4-ide -drive file=/dev/sdb,id=disk,format=raw -device ide-hd,bus=piix4-ide.1,drive=disk'
+HD='-device piix4-ide,bus=pcie.0,id=piix4-ide -drive file=/dev/sdb,id=disk,format=raw,if=none -device ide-hd,bus=piix4-ide.1,drive=disk'
 
 # here's the real bread and butter. Adding a GPU bus and attaching devices to it
 # also disabling the built-in vga, which will ensure routing of graphics to the GPUs.

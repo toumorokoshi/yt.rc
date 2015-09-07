@@ -17,7 +17,7 @@ $SCRIPTPATH/bind_devices
 # first, we disable one of the output of the screen that the graphics card will take control of.
 # The monitor switches automatically because one of the inputs turns off while the other input (with the windows vm) starts up
 echo "switching screen configuration..."
-xrandr --output DVI-I-2 --auto --output DVI-I-3 --off
+# xrandr --output DVI-I-2 --auto --output DVI-I-3 --off
 
 # if synergy isn't running, we start in now.
 # synergy is how we communicate to the windows vm
@@ -35,4 +35,4 @@ $SCRIPTPATH/start_vm
 
 # finally, we restore our screen
 echo "back to normal configuration..."
-xrandr --output DVI-I-2 --auto --output DVI-I-3 --auto --right-of DVI-I-2
+# xrandr --output DVI-I-2 --auto --output DVI-I-3 --auto --right-of DVI-I-2

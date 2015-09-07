@@ -18,3 +18,5 @@
 	autosetuprebase = remote
 [http]
 	sslVerify = false
+[core]
+	excludesfile = /home/tsutsumi/.gitignore_global

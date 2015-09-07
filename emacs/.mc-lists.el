@@ -3,9 +3,12 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        c-electric-brace
         c-electric-colon
+        c-electric-lt-gt
         c-electric-paren
         c-electric-semi&comma
+        coffee-dedent-line-backspace
         evil-append-line
         evil-backward-char
         evil-change
@@ -19,11 +22,15 @@
         evil-forward-char
         evil-forward-word-begin
         evil-insert
+        evil-next-line
         evil-normal-state
         evil-previous-line
+        evil-scroll-line-down
         forward-sentence
         go-mode-insert-and-indent
         jedi:dot-complete
+        org-self-insert-command
+        python-indent-electric-colon
         sgml-slash
         tab-to-tab-stop
         viper-Append
