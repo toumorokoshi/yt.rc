@@ -2,7 +2,7 @@
 	name = Yusuke Tsutsumi
 	email = yusuke@tsutsumi.io
 [alias]
-	c = checkout
+  c = checkout
   ci = commit
 	s = status
 	st = stash
@@ -15,8 +15,8 @@
   rh = reset --hard
   cam = commit -am \"\"
 [branch]
-	autosetuprebase = remote
+  autosetuprebase = remote
 [http]
-	sslVerify = false
+  sslVerify = false
 [core]
-	excludesfile = /home/tsutsumi/.gitignore_global
+   excludesfile = /home/tsutsumi/.gitignore_global
