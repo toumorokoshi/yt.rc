@@ -1,0 +1,14 @@
+- name: install synergy conf
+  template: src=./synergy.conf dest=/etc/synergy.conf
+
+- name: install systemd unit file
+  template: src=./synergy.systemd dest=/usr/lib/systemd/system/synergy@.service
+
+- name: reload systemctl changes
+  shell: systemctl daemon-reload
+
+- name: start systemd for tsutsumi
+  shell: systemctl start synergy@tsutsumi
+
+- name: enable systemd for tsutsumi
+  shell: systemctl enable synergy@tsutsumi
